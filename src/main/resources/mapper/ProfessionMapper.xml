@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="practice02_back.mapper.ProfessionMapper">
+
+    <resultMap id="getProByScid" type="profession">
+        <result property="description" column="description"/>
+        <result property="subject" column="subject"/>
+        <result property="major" column="major"/>
+        <result property="pid" column="pid"/>
+        <result property="proname" column="proname"/>
+        <result property="timelength" column="timelength"/>
+        <result property="classes" column="classes"/>
+        <result property="job" column="job"/>
+        <result property="graduate" column="graduate"/>
+        <result property="code" column="code"/>
+        <result property="sort" column="sort"/>
+        <collection property="schools" ofType="School">
+            <result property="scid" column="scid"/>
+            <result property="name" column="name"/>
+            <result property="areaname" column="areaname"/>
+            <result property="areaid" column="areaid"/>
+            <result property="description" column="description"/>
+            <result property="acronym" column="acronym"/>
+            <result property="region" column="region"/>
+            <result property="reid" column="reid"/>
+            <result property="usedname" column="usedname"/>
+            <result property="foundingYear" column="foundingYear"/>
+            <result property="department" column="department"/>
+            <result property="iscombine" column="iscombine"/>
+            <result property="is985" column="is985"/>
+            <result property="is211" column="is211"/>
+            <result property="isDoubleFirstClass" column="isDoubleFirstClass"/>
+            <result property="firstClassNum" column="firstClassNum"/>
+            <result property="facultyNum" column="facultyNum"/>
+            <result property="academicianNum" column="academicianNum"/>
+            <result property="changjiangScholarNum" column="changjiangScholarNum"/>
+            <result property="teachersNum" column="teachersNum"/>
+            <result property="undergraProNum" column="undergraProNum"/>
+            <result property="postgraProNum" column="postgraProNum"/>
+            <result property="doctorProNum" column="doctorProNum"/>
+            <result property="mainLabNum" column="mainLabNum"/>
+            <result property="undergraEnrollNum" column="undergraEnrollNum"/>
+            <result property="postgraEnrollNum" column="postgraEnrollNum"/>
+            <result property="schoolWeb" column="schoolWeb"/>
+        </collection>
+    </resultMap>
+
+    <select id="getProfessionByScid" resultMap="getProByScid">
+        select *
+        from zhiyuan.profession pro,
+             zhiyuan.school sc,
+#              zhiyuan.t_school_profession sc_pro
+             zhiyuan.gaokao g
+        where g.scid = sc.scid
+          and g.spname = pro.proname
+          and sc.scid = #{scid}
+    </select>
+
+
+    <select id="selectDistinctMajor" resultType="profession">
+        select distinct major, subject, pid, proname, code
+        from zhiyuan.profession;
+    </select>
+
+    <select id="getDistinctMajor" resultType="profession">
+        select distinct major
+        from zhiyuan.profession;
+    </select>
+
+    <select id="selectByPid" resultType="profession" parameterType="Integer">
+        select *
+        from zhiyuan.profession
+        where pid = #{pid}
+    </select>
+
+
+    <select id="getProfessionByProname" resultType="profession">
+        select * from zhiyuan.profession
+        <where>
+            <if test="profession !=null and profession !=''">
+                subject like concat('%',#{profession},'%')
+                or proname like concat('%',#{profession},'%')
+            </if>
+            <if test="profession ==null or profession==''">
+                pid=0
+            </if>
+        </where>
+    </select>
+
+
+
+
+    <select id="getProfessionDescByProname" resultType="profession">
+        select *
+        from profession
+        where proname = #{proname}
+    </select>
+
+    <select id="countByMajor" resultType="Integer">
+        select count(1)
+        from profession
+        where major = #{major}
+    </select>
+
+    <select id="findProfessionByMajor" resultType="Profession">
+        select *
+        from zhiyuan.profession
+        where major = #{major}
+        limit #{offset},#{size}
+    </select>
+</mapper>

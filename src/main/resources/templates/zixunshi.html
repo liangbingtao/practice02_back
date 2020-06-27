@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>咨询师</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/me.css">
+    <style>
+        body{
+            background-color: whitesmoke;
+        }
+        .title {
+            margin-top: 10px;
+            /*margin-left: 280px;*/
+            text-align: center;
+        }
+
+        .all {
+            width: 1260px;
+            height: 1043px;
+            background-color: #f9f9f9;
+            margin: 30px 30px;
+        }
+
+        .fw {
+            width:25%;
+            height: 340px;
+            /*background-color: whitesmoke;*/
+            margin-top: 5px;
+            margin-left: 30px;
+
+            float: left;
+
+        }
+
+
+
+        .teach {
+            float: left;
+            width: 65%;
+            margin-left: 40px;
+            margin-top: 5px;
+
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div th:insert="navigation :: nav"></div>
+
+<ul class="breadcrumb" style="margin-top: -20px;background-color: white">
+    <span class="glyphicon glyphicon-pawn"></span>
+    <li><a href="#">首页</a></li>
+    <li><a href="#">咨询师</a></li>
+
+</ul>
+
+<div class="container" style="background-color: #FFFFFF;width: 1260px">
+
+    <div class="col-lg-8" style="margin-bottom: 30px">
+        <div>
+            <p style="margin-top:20px;margin-left:20px;font-size: 24px"><span class="glyphicon glyphicon-menu-hamburger"></span> 咨询师咨询</p>
+            <hr>
+            <div class="media" style="margin-top: 10px">
+                <div class="media-left">
+                    <img src="http://img3.youzy.cn/content/media/thumbs/p00212161.jpeg" class="media-object" style="width:100px;border-radius: 100px">
+                </div>
+                <div class="media-body">
+                    <h3 class="media-heading" >孙老师</h3>
+                    <span class="label label-primary" style="margin-right: 5px">志愿填报</span>
+                    <span class="label label-primary" style="margin-right: 5px">高招政策</span>
+                    <span class="label label-primary">学业规划</span>
+
+                        <input type="button" value="预约" style="float: right;margin-right: 15px">
+
+                        <p style="font-size: 12px;margin-top: 5px;color: #66696b">  西安交通大学博士，高校教授，熟练掌握招生政策、投档录取规则，透彻了解各专业的学习内容、
+                            就业趋势以及各个大学的优势和特色,多次带领研究生、本科生参加多项世界级、国家级科技大赛.......</p>
+
+                    <p style="font-size: 12px;margin-left: 10px">从业经历：15年</p>
+
+                </div>
+            </div>
+            <div class="media" style="margin-top: 20px">
+                <div class="media-left">
+                    <img src="http://img3.youzy.cn/content/media/thumbs/p00212356.jpeg" class="media-object" style="width:100px;border-radius: 100px">
+                </div>
+                <div class="media-body">
+                    <h3 class="media-heading" >杜老师</h3>
+                    <span class="label label-primary" style="margin-right: 5px">志愿填报</span>
+                    <span class="label label-primary" style="margin-right: 5px">高招政策</span>
+
+                    <span class="label label-primary" style="margin-right: 5px">心理咨询</span>
+                    <span class="label label-primary">学业规划</span>
+
+                    <input type="button" value="预约" style="float: right;margin-right: 15px">
+
+                    <p style="font-size: 12px;margin-top: 5px;color: #66696b">  西北工业大学博士，高校教授，深谙工科类专业升学规划之道，航天、航空、航海、
+                        材料学专家，此类专业教学工作20年，谙熟此类专业人才培养规划及升学、就业前景。.......</p>
+
+                    <p style="font-size: 12px;margin-left: 10px">从业经历：20年</p>
+
+                </div>
+            </div>
+            <div class="media" style="margin-top: 20px">
+                <div class="media-left">
+                    <img src="http://img3.youzy.cn/content/media/thumbs/p00212358.jpeg" class="media-object" style="width:100px;border-radius: 100px">
+                </div>
+                <div class="media-body">
+                    <h3 class="media-heading" >杨老师</h3>
+                    <span class="label label-primary" style="margin-right: 5px">志愿填报</span>
+                    <span class="label label-primary" style="margin-right: 5px">高招政策</span>
+
+
+                    <span class="label label-primary">学业规划</span>
+
+                    <input type="button" value="预约" style="float: right;margin-right: 15px">
+
+                    <p style="font-size: 12px;margin-top: 5px;color: #66696b"> 陕西师范大学硕士，高校中文系副教授。擅长文科类专业一对一个性化升学规划。
+                        教育类专业教学工作近20年，精研大学学业规划，掌握教育类专业特点与就业前景。.......</p>
+
+                    <p style="font-size: 12px;margin-left: 10px">从业经历：15年</p>
+
+                </div>
+            </div>
+            <div class="media" style="margin-top: 20px">
+                <div class="media-left">
+                    <img src="http://img3.youzy.cn/content/media/thumbs/p00213061.jpeg" class="media-object" style="width:100px;border-radius: 100px">
+                </div>
+                <div class="media-body">
+                    <h3 class="media-heading" >古老师</h3>
+                    <span class="label label-primary" style="margin-right: 5px">志愿填报</span>
+                    <span class="label label-primary" style="margin-right: 5px">高招政策</span>
+
+                    <span class="label label-primary" style="margin-right: 5px">心理咨询</span>
+                    <span class="label label-primary">学业规划</span>
+
+                    <input type="button" value="预约" style="float: right;margin-right: 15px">
+
+                    <p style="font-size: 12px;margin-top: 5px;color: #66696b"> 毕业于西安理工大学，高校教师，参加大学招生工作近10年，专注从事高考填报志愿业务，熟知平行志愿下高考报考的规则、
+                        风险和平行志愿报考的技巧，擅长结合考生分数、特长、家庭和性格特征，.......</p>
+
+                    <p style="font-size: 12px;margin-left: 10px">从业经历：10年</p>
+
+                </div>
+            </div>
+            <div class="media" style="margin-top: 20px">
+                <div class="media-left">
+                    <img src="http://img3.youzy.cn/content/media/thumbs/p00212537.jpeg" class="media-object" style="width:100px;border-radius: 100px">
+                </div>
+                <div class="media-body">
+                    <h3 class="media-heading" >孙老师</h3>
+                    <span class="label label-primary" style="margin-right: 5px">志愿填报</span>
+                    <span class="label label-primary" style="margin-right: 5px">高招政策</span>
+
+                    <span class="label label-primary" style="margin-right: 5px">心理咨询</span>
+                    <span class="label label-primary">学业规划</span>
+
+                    <input type="button" value="预约" style="float: right;margin-right: 15px">
+
+                    <p style="font-size: 12px;margin-top: 5px;color: #66696b"> 高级教师，从事高考填报志愿业务实践10年，经验丰富，熟练掌握招生政策、投档录取规则，能根据考生不同性格、
+                        兴趣爱好、学科特长、发展潜质等综合因素正确选择专业与院校。.......</p>
+
+                    <p style="font-size: 12px;margin-left: 10px">从业经历：10年</p>
+
+                </div>
+            </div>
+            <div class="media" style="margin-top: 20px">
+                <div class="media-left">
+                    <img src="http://img3.youzy.cn/content/media/thumbs/p00212534.jpeg" class="media-object" style="width:100px;border-radius: 100px">
+                </div>
+                <div class="media-body">
+                    <h3 class="media-heading" >曹老师</h3>
+                    <span class="label label-primary" style="margin-right: 5px">志愿填报</span>
+                    <span class="label label-primary" style="margin-right: 5px">高招政策</span>
+
+                    <span class="label label-primary" style="margin-right: 5px">心理咨询</span>
+                    <span class="label label-primary">学业规划</span>
+
+                    <input type="button" value="预约" style="float: right;margin-right: 15px">
+
+                    <p style="font-size: 12px;margin-top: 5px;color: #66696b"> 高级教师，从事高考填报志愿业务实践近10年，对传统志愿和平行志愿做过精密研究，
+                        为众多高考生设计、指导志愿方案，达成“分数+专业+院校+城市”最佳匹配的高性价比报考。.......</p>
+
+                    <p style="font-size: 12px;margin-left: 10px">从业经历：10年</p>
+
+                </div>
+            </div>
+
+            <ul class="pagination pagination-lg" style="margin: 30px 220px">
+                <li ><a href="#">&laquo;</a></li>
+                <li class="active"><a href="#" class="active">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&raquo;</a></li>
+            </ul><br>
+
+        </div>
+    </div>
+    <div class="col-lg-4" style="margin-bottom: 30px">
+        <p style="margin-top:20px;margin-left:20px;font-size: 24px"><span class="glyphicon glyphicon-menu-hamburger"></span> 服务项目</p>
+        <hr>
+
+        <div class="media">
+            <div class="media-left">
+                <img src="http://img3.youzy.cn/content/media/thumbs/p00212351.jpeg" class="media-object" style="width:190px;height: 100px">
+            </div>
+            <div class="media-body">
+
+                <p>服务团队：专业解读与升学规划专家团队</p>
+
+                <p style="float: left;margin: 8px 10px;color: #3889d4;font-size: 26px">9660.00</p>
+
+            </div>
+        </div>
+        <div class="media">
+            <div class="media-left">
+                <img src="http://img3.youzy.cn/content/media/thumbs/p00212353.jpeg" class="media-object" style="width:190px;height: 100px">
+            </div>
+            <div class="media-body">
+
+                <p>来自陕西知名高校专家团队，一对一为学生量身打造科学合理升学规划及志愿填报方案</p>
+
+                <p style="float: left;margin: 8px 10px;color: #3889d4;font-size: 26px">5660.00</p>
+
+            </div>
+        </div>
+        <div class="media">
+            <div class="media-left">
+                <img src="//staticv2.youzy.cn/imagestob/buy/sxk01.jpg" class="media-object" style="width:190px;height: 100px">
+            </div>
+            <div class="media-body">
+
+
+
+                <p style="float: left;margin: 68px 10px;color: #3889d4;font-size: 26px">360.00</p>
+
+            </div>
+        </div>
+        <hr>
+        <div class="xinxi" style="margin-top: 0px">
+            <p style="margin-bottom:0px;margin-left:20px;font-size: 24px"><span class="glyphicon glyphicon-menu-hamburger"></span> 官方公众号</p>
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" src="http://img3.youzy.cn/content/media/thumbs/p00212417.jpeg" alt="..." style="width: 130px">
+                    </a>
+                </div>
+                <div class="media-body">
+                    UP志愿专家官方服务微信公众号。对高考升学及志愿有疑惑的同学及家长可以微信扫一扫入群交流
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+<footer class="ui inverted vertical segment m-padded-tb-massive" style="margin-top: 40px">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided stackable grid">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="../static/images/wechat.jpg" class="ui rounded image" alt="" style="width: 110px">
+                    </div>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced " >关于我们</h4>
+
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced ">联系我们</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item m-text-thin">服务热线： 18629648756</a>
+                    <a href="#" class="item m-text-thin">营业时间： 9:00~21:00</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced ">法律声明</h4>
+
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced m-opacity-tiny">UP志愿专家 西安阿谱云教育科技有限公司版权所有陕ICP备20000936号 © 2012- 2020</p>
+    </div>
+
+</footer>
+</body>
+</html>

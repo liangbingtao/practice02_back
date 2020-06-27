@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>新高考</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/me.css">
+
+    <style>
+        body{
+            background-color: whitesmoke;
+        }
+        .title {
+            margin-top: 10px;
+            /*margin-left: 280px;*/
+            text-align: center;
+        }
+
+        .cube {
+            width: 1250px;
+            height: 610px;
+            background-color: whitesmoke;
+            margin: 30px 40px;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        input[type="radio"] + span {
+            display: inline-block;
+            width: 130px;
+            height: 50px;
+            font-size: 30px;
+            line-height: 50px;
+            text-align: center;
+            border: 1px solid #999;
+            background-color: #fff;
+            margin: 24px 20px;
+            border-radius: 25px;
+        }
+
+        input[type="radio"]:checked + span {
+            border: 1px solid #090;
+            background-color: #cacacd;
+        }
+
+        .sumbit {
+            width: 160px;
+            height: 50px;
+            background-color: cadetblue;
+            text-align: center;
+            margin-top: 30px;
+            margin-left: 540px;
+            border: 1px solid;
+            font-size: 20px;
+        }
+
+        .sm {
+            margin: 30px 60px;
+            width: 1050px;
+            height: 120px;
+            border-style: dashed;
+
+            border-width: 1px;
+        }
+
+        .sm p {
+            font-size: 4px;
+            margin-left: 10px;
+            margin-top: 15px;
+            color: #42495d;
+        }
+
+        .dropdown active{
+            background-color: #b0b0b0;
+        }
+
+    </style>
+</head>
+<body>
+<div th:insert="navigation :: nav"></div>
+<ul class="breadcrumb" style="margin-top: -20px;background-color: white">
+    <span class="glyphicon glyphicon-pawn"></span>
+    <li><a href="/">首页</a></li>
+    <li><a href="#">选科</a></li>
+
+</ul>
+<div class="container" style="width: 1260px;background-color: #FFFFFF">
+    <br>
+<div class="col-lg-12 col-md-12 col-sm-8 col-xs-6">
+    <h1 style="text-align: center">请选择省份</h1>
+    <form action="">
+        <!--        <label><input type="radio" name="test" checked="checked" /><span>B北京</span></label>-->
+        <label><input type="radio" name="r" value="0"/><span>B北京</span></label>
+        <label><input type="radio" name="r" value="1"/><span>H海南</span></label>
+        <label><input type="radio" name="r" value="2"/><span>S上海</span></label>
+        <label><input type="radio" name="r" value="3"/><span>S山东</span></label>
+        <label><input type="radio" name="r" value="4"/><span>T天津</span></label>
+        <label><input type="radio" name="r" value="5"/><span>Z浙江</span></label>
+        <label><input type="radio" name="r" value="6"/><span>J江苏</span></label>
+<!--        <br>-->
+        <label><input type="radio" name="r" value="7"/><span>H湖北</span></label>
+        <label><input type="radio" name="r" value="8"/><span>H湖南</span></label>
+        <label><input type="radio" name="r" value="9"/><span>L辽宁</span></label>
+        <label><input type="radio" name="r" value="10"/><span>C重庆</span></label>
+        <label><input type="radio" name="r" value="11"/><span>F福建</span></label>
+        <label><input type="radio" name="r" value="12"/><span>G广东</span></label>
+        <label><input type="radio" name="r" value="13"/><span>H河北</span></label>
+
+    </form>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+        <input class="sumbit" type="button" value="下一步" onclick="che()"/>
+
+        <div class="sm">
+            <h6 class="pt10" style="margin-left: 5px ">数据说明：</h6>
+            <p>1、本系统选科查询结果根据教育考试院发布“普通高校专业（类）选考科目范围”；</p>
+            <p>2、用户应根据自己的兴趣特长、职业生涯规划和学习情况等，结合选考科目范围综合考虑，自主确定选考科目；</p>
+            <p>3、因少量院校不定期进行学科专业调整，本系统选科推荐辅助参考。</p>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+
+
+<footer class="ui inverted vertical segment m-padded-tb-massive" style="margin-top: 40px">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided stackable grid">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="../static/images/wechat.jpg" class="ui rounded image" alt="" style="width: 110px">
+                    </div>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced " >关于我们</h4>
+
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced ">联系我们</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item m-text-thin">服务热线： 18629648756</a>
+                    <a href="#" class="item m-text-thin">营业时间： 9:00~21:00</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced ">法律声明</h4>
+
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced m-opacity-tiny">UP志愿专家 西安阿谱云教育科技有限公司版权所有陕ICP备20000936号 © 2012- 2020</p>
+    </div>
+
+</footer>
+
+
+
+</body>
+<script>
+    var data = 0;
+
+    function che() {
+        var rs = document.getElementsByName('r');
+        for (var i = 0, len = rs.length; i < len; i++) {
+            if (i < 6 && rs[i].checked) {
+                // data = i;
+                // alert(data);
+                window.location.href = '#';
+                break;
+            } else {
+                window.location.href = '#';
+            }
+        }
+    }
+</script>
+
+
+
+
+</html>

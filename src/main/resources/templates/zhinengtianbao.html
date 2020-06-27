@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>智能填报</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/me.css">
+
+    <style>
+        body{
+            background-color: whitesmoke;
+        }
+        .title {
+            margin-top: 10px;
+            /*margin-left: 280px;*/
+            text-align: center;
+        }
+
+        .dropdown active{
+            background-color: #b0b0b0;
+        }
+
+
+
+
+        .lb{
+            width: 100%;
+            margin-top: 10px;
+        }
+        .lb a{
+            float: left;
+            font-size: 15px;
+            margin-left: 8px;
+        }
+        .lb span{
+            float: left;
+            margin-left: 8px;
+        }
+
+        .zd a {
+            width: 50px;
+            height: 50px;
+            background-color: #42495d;
+            color: #b0b0b0;
+            font-size: 15px;
+        }
+
+
+
+
+
+
+        .sm {
+            margin-left: 40px;
+            margin-top: 20px;
+            width:90%;
+            height:170px;
+            border-style: dashed;
+             border-color: #9D1E15;
+            border-width: 1px;
+        }
+
+        .sm p {
+            font-size: 4px;
+            margin-left: 10px;
+            margin-top: 10px;
+            color: #66696b;
+        }
+
+
+    </style>
+</head>
+<body>
+<div th:insert="navigation :: nav"></div>
+
+    <ul class="breadcrumb" style="margin-top: -20px;background-color: white">
+        <span class="glyphicon glyphicon-pawn"></span>
+        <li><a href="#">首页</a></li>
+        <li><a href="#">选择报考批次</a></li>
+
+    </ul>
+
+    <div class="container" style="background-color:#FFFFFF;width: 1260px;height: 640px">
+
+        <div class="col-lg-3" style="margin-left: -30px">
+            <img src="http://staticv2.youzy.cn/images/usercenter/head-bg1.jpg" alt="">
+            <div class="dl">
+
+            </div>
+
+            <div class="lb">
+                <a href="#">关注院校</a>
+                <span>|</span>
+                <a href="#">关注专业</a>
+                <span>|</span>
+                <a href="#">成绩</a>
+                <span>|</span>
+            </div>
+
+
+            <ul class="list-group" style="margin-top: 40px">
+                <li class="list-group-item"><a href="zhinengtianbao">应用广场</a></li>
+                <li class="list-group-item"><a href="zixunshi">专家预约</a></li>
+                <li class="list-group-item"><a href="myceping">我的测评</a></li>
+                <li class="list-group-item"><a href="myfuwu">我的服务</a></li>
+                <li class="list-group-item"><a href="#">我的选科</a></li>
+                <li class="list-group-item"><a href="#">我的职业</a></li>
+                <li class="list-group-item"><a href="#">我的志愿表</a></li>
+            </ul>
+
+        </div>
+
+
+
+
+
+        <div class="col-lg-9">
+            <table class="table table-hover" style="width: 90%;border: 1px solid #b0b0b0;margin: 20px 40px ">
+
+                <thead>
+                <tr>
+                    <th>报考批次</th>
+                    <th>2019报考批次控制线</th>
+                    <th><input type="button" value="开始" style="background-color: #3889d4;border: none"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>本二批</td>
+                    <td>文科400，理科363</td>
+                    <td><input type="button" value="开始" style="background-color:#f9f9f9;border:1px solid black"></td>
+                </tr>
+                <tr>
+                    <td>本三批</td>
+                    <td>文科150，理科150</td>
+                    <td></td>
+                </tr>
+
+                </tbody>
+            </table>
+
+            <div class="sm">
+                <h5 class="pt10" style="margin-left: 20px;margin-top: 10px "><span class="glyphicon glyphicon-exclamation-sign"></span>重要提示：</h5>
+                <p>1、本系统依据历年院校录取数据提供高考志愿填报智能模拟功能，不等同于实际的网上填报志愿，建议考生在填报志愿时，结合本系统的推荐以完善志愿表；</p>
+                <p>2、2019年招生计划已更新；</p>
+                <p>3、2012-2018年各院校录取数据，参考各省市出版的填报指南以及各本专科院校的官网历年录取数据；</p>
+                <p>4、您正在使用的是陕西版，提供“普通类文理科本一批、本二批、专科批、”3个批次的志愿智能模拟功能，您可以按系统的重点填报提示选择适合自己的批 </p>
+                    <p>次模拟，也可直接选择自己关注的批次模拟；</p>
+                <p>5、在正式填报时，以教育考试院公布的最新招生计划为准；</p>
+                <p>6、若推荐院校招生计划数出现新增专业，会提示”新增专业“且历三年录取数据展示默认采用该院校最低录取分数线。</p>
+            </div>
+
+    </div>
+
+    </div>
+    <footer class="ui inverted vertical segment m-padded-tb-massive" style="margin-top: 40px">
+        <div class="ui center aligned container">
+            <div class="ui inverted divided stackable grid">
+                <div class="three wide column">
+                    <div class="ui inverted link list">
+                        <div class="item">
+                            <img src="../static/images/wechat.jpg" class="ui rounded image" alt="" style="width: 110px">
+                        </div>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced " >关于我们</h4>
+
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced ">联系我们</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item m-text-thin">服务热线： 18629648756</a>
+                        <a href="#" class="item m-text-thin">营业时间： 9:00~21:00</a>
+                    </div>
+                </div>
+                <div class="seven wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced ">法律声明</h4>
+
+                </div>
+            </div>
+            <div class="ui inverted section divider"></div>
+            <p class="m-text-thin m-text-spaced m-opacity-tiny">UP志愿专家 西安阿谱云教育科技有限公司版权所有陕ICP备20000936号 © 2012- 2020</p>
+        </div>
+
+    </footer>
+
+
+</body>
+</html>

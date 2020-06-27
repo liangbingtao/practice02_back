@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>1对1填报</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="/css/me.css">
+    <style>
+        body{
+            background-color: whitesmoke;
+        }
+        .title {
+            margin-top: 10px;
+            /*margin-left: 280px;*/
+            text-align: center;
+        }
+
+        .dropdown active{
+            background-color: #b0b0b0;
+        }
+
+
+        .rong{
+            width: 85%;
+            margin: 30px 70px;
+        }
+    </style>
+</head>
+<body>
+<!--<div class="title">-->
+<!--    <div class="heading-spotlight">-->
+<!--        <a href="/">-->
+<!--            <img src="http://img3.youzy.cn/content/media/thumbs/p00208392.png" height="80" width="358">-->
+<!--        </a>-->
+
+<!--    </div>-->
+<!--</div>-->
+<!--<nav class="navbar navbar-default" role="navigation" style="margin-top: 20px">-->
+<!--    <div class="container-fluid">-->
+<!--        <div class="navbar-header">-->
+<!--            <a class="navbar-brand" href="#">志愿填报专家</a>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <ul class="nav navbar-nav">-->
+<!--                <li  ><a href="new.html">首页</a></li>-->
+<!--                <li class="dropdown"  >-->
+<!--                    <a  href="xingaokao.html" class="dropdown-toggle" data-toggle="dropdown">-->
+<!--                        新高考-->
+<!--                        <b class="caret"></b>-->
+<!--                    </a>-->
+<!--                    <ul class="dropdown-menu">-->
+<!--                        <li><a href="zixun.html">高考资讯</a></li>-->
+<!--                        <li class="divider"></li>-->
+<!--                        <li><a href="xingaokao.html">完整智能模式</a></li>-->
+<!--                        <li class="divider"></li>-->
+<!--                        <li><a href="#">根据大学选专业</a></li>-->
+
+<!--                        <li><a href="#">根据专业选科目</a></li>-->
+
+<!--                        <li><a href="#">根据科目选专业</a></li>-->
+<!--                    </ul>-->
+<!--                </li>-->
+<!--                <li><a href="xueyeceping.html">学业测评</a></li>-->
+<!--                <li class="dropdown active">-->
+<!--                    <a href="zhinengtianbao.html" class="dropdown-toggle" data-toggle="dropdown">-->
+<!--                        智能填报-->
+<!--                        <b class="caret"></b>-->
+<!--                    </a>-->
+<!--                    <ul class="dropdown-menu" style="width: 270px">-->
+<!--                        <ul class="fen" style="width: 50%;float: left" >-->
+<!--                            <p >查</p>-->
+<!--                            <li><a href="zhaozhuanye.html">查专业</a></li>-->
+<!--                            <li><a href="zhaodaxue.html">找大学</a></li>-->
+<!--                            <li><a href="weici.html">位次查询</a></li>-->
+<!--                            <li><a href="fenshuxian.html">分数线</a></li>-->
+<!--                            <li><a href="#">提前批</a></li>-->
+<!--                            <li><a href="#">看职业</a></li>-->
+<!--                            <li><a href="picixian.html">批次线</a></li>-->
+<!--                            <li class="divider"></li>-->
+<!--                        </ul>-->
+<!--                        <ul class="fen" style="width: 50%;float: left">-->
+<!--                            <p>填</p>-->
+<!--                            <li><a href="zhinengtianbao.html">一键填报</a></li>-->
+<!--                            <li><a href="1dui1.html">专家一对一填报</a></li>-->
+<!--                            <li><a href="zhinengtianbao.html">院线优先填报</a></li>-->
+<!--                            <li><a href="zhinengtianbao.html">专业优先填报</a></li>-->
+<!--                            <li><a href="zhinengtianbao.html">自主填报</a></li>-->
+<!--                        </ul>-->
+<!--                    </ul>-->
+<!--                </li>-->
+<!--                <li class="dropdown">-->
+<!--                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">-->
+<!--                        课堂-->
+<!--                        <b class="caret"></b>-->
+<!--                    </a>-->
+<!--                    <ul class="dropdown-menu">-->
+<!--                        <li><a href="jiangtang.html">讲堂</a></li>-->
+<!--                        <li class="divider"></li>-->
+<!--                        <li><a href="kecheng.html">课程</a></li>-->
+<!--                        <li class="divider"></li>-->
+<!--                        <li><a href="#">试题</a></li>-->
+<!--                        <li><a href="#">模拟试题</a></li>-->
+<!--                        <li><a href="#">高考真题</a></li>-->
+
+
+<!--                    </ul>-->
+<!--                </li>-->
+<!--                <li><a href="fuwu.html">服务</a></li>-->
+<!--                <li><a href="zixunshi.html">咨询师</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="col-lg-4">-->
+<!--            <form class="navbar-form navbar-left" style="position: absolute;right: 150px">-->
+<!--                <div class="form-group">-->
+<!--                    <input type="text" class="form-control" placeholder="找大学/查专业">-->
+<!--                </div>-->
+<!--                <button type="submit" class="btn btn-default">搜索</button>-->
+
+<!--            </form>-->
+<!--        </div>-->
+
+<!--        <form action="" style="position: absolute;right: 20px;top:8px">-->
+<!--            <button type="submit" class="btn btn-default"><a href="register.html">注册</a></button>-->
+<!--            <button type="submit" class="btn btn-default"><a href="denglu.html">登录</a></button>-->
+
+<!--        </form>-->
+<!--    </div>-->
+<!--</nav>-->
+
+<div th:insert="navigation :: nav"></div>
+<ul class="breadcrumb" style="margin-top: -20px;background-color: white">
+    <span class="glyphicon glyphicon-pawn"></span>
+    <li><a href="/">首页</a></li>
+    <li><a href="/1dui1">1对1填报</a></li>
+
+</ul>
+
+
+<div class="container" style="background-color: #FFFFFF">
+    <div class="col-md-12" >
+        <p style="font-size: 22px;margin-left: 30px;padding-top: 20px"><span class="glyphicon glyphicon-menu-hamburger"></span>志愿填报</p>
+
+        <div class="rong">
+            <ul id="myTab" class="nav nav-tabs">
+                <li class="active">
+                    <a href="#home" data-toggle="tab" style="width: 460px;font-size: 20px;text-align: center">
+                        智能自主填报（仅VIP）
+                    </a>
+                </li>
+                <li><a href="#ios" data-toggle="tab" style="width: 400px;font-size: 20px;text-align: center">专家一对一填报（专业、精准）</a></li>
+
+            </ul>
+            <br>
+
+            <div id="myTabContent" class="tab-content" style="margin-top: 40px">
+                <div class="tab-pane fade in active" id="home">
+                    <div class="media" style="margin-top: 30px">
+                        <div class="media-left">
+                            <img src="//staticv3-pre.youzy.cn/ToB.PC/images/usercenter/homepage/icons/9-2.png" class="media-object" style="width:90px">
+                        </div>
+                        <div class="media-body">
+                            <h2 class="media-heading">院校优先填报</h2>
+                            <input type="button" value="使用" style="float: right;margin-right:20px;background-color: #3889d4;margin-top:0px;width: 60px;height: 35px">
+                            <p>多少分数能上什么大学？一键便知</p>
+
+                            <p>依据当年招生计划结合院校历五年录取分数和位次精准定位，智能分析</p>
+                        </div>
+                    </div>
+                    <div class="media" style="margin-top: 50px">
+                        <div class="media-left">
+                            <img src="//staticv3-pre.youzy.cn/ToB.PC/images/usercenter/homepage/icons/7-2.png" class="media-object" style="width:90px">
+                        </div>
+                        <div class="media-body">
+                            <h2 class="media-heading">自主填报</h2>
+                            <input type="button" value="使用" style="float: right;margin-right:20px;background-color: #3889d4;margin-top:0px;width: 60px;height: 35px">
+                            <p>某院校、专业到底能不能上，风险大不大？一填便知</p>
+
+                            <p>适合已有意向大学和专业的考生，看看自己的填报方案是否合理</p>
+                        </div>
+                    </div>
+                    <div class="media" style="margin-top: 50px">
+                        <div class="media-left">
+                            <img src="//staticv3-pre.youzy.cn/ToB.PC/images/usercenter/homepage/icons/2-2.png" class="media-object" style="width:90px">
+                        </div>
+                        <div class="media-body">
+                            <h2 class="media-heading">专业优先填报</h2>
+                            <input type="button" value="使用" style="float: right;margin-right:20px;background-color: #3889d4;margin-top:0px;width: 60px;height: 35px">
+                            <p>想报的专业有哪些院校开设，录取概率是多少？一查便知</p>
+
+                            <p>适合有明确的专业喜好的考生，帮助考生依据专业和成绩定位目标大学</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="tab-pane fade" id="ios">
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<br>
+<footer class="ui inverted vertical segment m-padded-tb-massive">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided stackable grid">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="../static/images/wechat.jpg" class="ui rounded image" alt="" style="width: 110px">
+                    </div>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced " >关于我们</h4>
+
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced ">联系我们</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item m-text-thin">服务热线： 18629648756</a>
+                    <a href="#" class="item m-text-thin">营业时间： 9:00~21:00</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced ">法律声明</h4>
+
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced m-opacity-tiny">UP志愿专家 西安阿谱云教育科技有限公司版权所有陕ICP备20000936号 © 2012- 2020</p>
+    </div>
+
+</footer>
+</body>
+</html>

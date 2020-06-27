@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="practice02_back.mapper.UserMapper">
+
+    <select id="findByToken" parameterType="String" resultType="user">
+        select *
+        from zhiyuan.user
+        where token = #{token}
+    </select>
+
+    <select id="findByUsername" resultType="user" parameterType="String">
+        select *
+        from zhiyuan.user
+        where userName = #{username}
+    </select>
+
+        <insert id="save" parameterType="user">
+            insert into zhiyuan.user (userName, passWord,userphone)
+            values (#{userName}, #{passWord},#{userphone})
+        </insert>
+
+    <select id="findByUsernameAndPassword" parameterType="string" resultType="user">
+        select *
+        from zhiyuan.user
+        where userName = #{username}
+          and passWord = #{password}
+        limit 1
+    </select>
+
+    <update id="updateUser" parameterType="user">
+        update zhiyuan.user
+        set token = #{token}
+            where userName = #{userName}
+    </update>
+
+    <select id="selectByPhone" resultType="user" parameterType="String">
+        select  * from zhiyuan.user where userphone =#{phone}
+    </select>
+</mapper>

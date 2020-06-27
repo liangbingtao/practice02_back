@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="/css/me.css">
+
+    <style>
+
+        .title {
+            margin-top: 10px;
+            /*margin-left: 280px;*/
+            text-align: center;
+        }
+
+        .marker {
+            width: 8px;
+            height: 8px;
+            border: 1px solid #088;
+            border-radius: 100px;
+            background-color: #3889d4;
+            opacity: 0.5;
+            margin-top: 5px;
+        }
+
+        body{
+            background-color: whitesmoke;
+        }
+
+        .intro p {
+            width: 60%;
+            margin-left: 45px;
+            margin-top: 2px;
+        }
+
+        .intro input {
+            width: 70px;
+            height: 30px;
+            float: right;
+            margin-top: -60px;
+            margin-right: 50px;
+            background-color: #008888;
+        }
+
+
+        .category-list {
+
+            position: absolute;
+            right: 50px;
+            top: 0px;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 200;
+            height: 360px;
+            width: 100px;
+        }
+
+
+        .content-channel {
+            float: left;
+            width: 234px;
+        }
+
+
+        .content-channel ul {
+            background: darkslategrey;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .content-channel ul li {
+            float: left;
+            width: 33.33%;
+            height: 85%;
+            margin-top: 20px;
+
+            display:inline-block
+        }
+
+        .content-channel ul li a {
+            display: block;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 18px;
+        }
+
+
+
+        .content-list {
+
+            float: left;
+            width: 992px;
+        }
+
+        .content-list ul {
+            width: 100%;
+            margin-left: 95px;
+        }
+
+        .content-list ul li {
+            width: 33.33%;
+            float: right;
+
+        }
+
+        .content-list ul li a {
+            display: block;
+            height: 120px;
+        }
+
+        .content-list ul li a img {
+            width: 286px;
+            height: 120px;
+        }
+
+        .clearfix::after {
+            content: '';
+            clear: both;
+            display: block;
+        }
+
+        .content-banner {
+            margin: auto 34px;
+
+
+        }
+
+        .content-banner a {
+            display: block;
+            width: 1228px;
+            height: 120px;
+        }
+
+        .content-banner a img {
+            width: 1288px;
+            height: 120px;
+
+        }
+
+        .channel-list clearfix a:hover{
+            background-color: #333333;
+        }
+
+
+
+        .container-big {
+            /*width: 28%;*/
+            float: left;
+            margin-left: 30px;
+
+        }
+
+
+        .container-big ul li {
+            width: 333px;
+            height: 360px;
+            float: left;
+
+
+        }
+
+
+
+        .new ul li {
+            text-align: center;
+            line-height: 20px;
+            display: block;
+            width: 80px;
+        }
+
+        .zd a {
+            width: 50px;
+            height: 50px;
+            background-color: #42495d;
+            color: #b0b0b0;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+
+<!--<div class="title">-->
+<!--    <div class="heading-spotlight">-->
+<!--        <a href="/">-->
+<!--            <img src="http://img3.youzy.cn/content/media/thumbs/p00208392.png" height="80" width="358">-->
+<!--        </a>-->
+
+<!--    </div>-->
+<!--</div>-->
+<!--<nav class="navbar navbar-default" role="navigation" style="margin-top: 20px;background-color: #2e6da4">-->
+
+
+<!--    <div class="container-fluid">-->
+<!--        <div class="navbar-header">-->
+<!--            <a class="navbar-brand" href="/" style="color: white">志愿填报专家</a>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <ul class="nav navbar-nav">-->
+<!--                <li  ><a href="/" style="color: white">首页</a></li>-->
+<!--                <li class="dropdown">-->
+<!--                    <a href="/xingaokao" class="dropdown-toggle" data-toggle="dropdown" style="color: white">-->
+<!--                        新高考-->
+<!--                        <b class="caret"></b>-->
+<!--                    </a>-->
+<!--                    <ul class="dropdown-menu">-->
+<!--                        <li><a href="/zixun">高考资讯</a></li>-->
+<!--                        <li class="divider"></li>-->
+<!--                        <li><a href="/xingaokao">完整智能模式</a></li>-->
+<!--                        <li class="divider"></li>-->
+<!--                        <li><a href="/chaxun">根据大学选专业</a></li>-->
+
+<!--                        <li><a href="#">根据专业选科目</a></li>-->
+
+<!--                        <li><a href="#">根据科目选专业</a></li>-->
+<!--                    </ul>-->
+<!--                </li>-->
+<!--                <li><a href="/xueyeceping" style="color: white">学业测评</a></li>-->
+<!--                <li class="dropdown">-->
+<!--                    <a href="/zhinengtianbao" class="dropdown-toggle" data-toggle="dropdown" style="color: white">-->
+<!--                        智能填报-->
+<!--                        <b class="caret"></b>-->
+<!--                    </a>-->
+<!--                    <ul class="dropdown-menu" style="width: 270px">-->
+<!--                        <ul class="fen" style="width: 50%;float: left" >-->
+<!--                            <p >查</p>-->
+<!--                            <li><a href="/majors/Homepage">查专业</a></li>-->
+<!--                            <li><a href="/schoolHomepage">找大学</a></li>-->
+<!--                            <li><a href="/weici">位次查询</a></li>-->
+<!--                            <li><a href="/fenshuxian">分数线</a></li>-->
+<!--                            <li><a href="#">提前批</a></li>-->
+<!--                            <li><a href="#">看职业</a></li>-->
+<!--                            <li><a href="/picixian">批次线</a></li>-->
+<!--                            <li class="divider"></li>-->
+<!--                        </ul>-->
+<!--                        <ul class="fen" style="width: 50%;float: left">-->
+<!--                            <p>填</p>-->
+<!--                            <li><a href="/zhinengtianbao">一键填报</a></li>-->
+<!--                            <li><a href="/1dui1">专家一对一填报</a></li>-->
+<!--                            <li><a href="/zhinengtianbao">院线优先填报</a></li>-->
+<!--                            <li><a href="/zhinengtianbao">专业优先填报</a></li>-->
+<!--                            <li><a href="/zhinengtianbao">自主填报</a></li>-->
+<!--                        </ul>-->
+<!--                    </ul>-->
+<!--                </li>-->
+<!--                <li class="dropdown">-->
+<!--                    <a href="/jiangtang" class="dropdown-toggle" data-toggle="dropdown" style="color: white">-->
+<!--                        课堂-->
+<!--                        <b class="caret"></b>-->
+<!--                    </a>-->
+<!--                    <ul class="dropdown-menu">-->
+<!--                        <li><a href="/jiangtang">讲堂</a></li>-->
+<!--                        <li class="divider"></li>-->
+<!--                        <li><a href="/kecheng">课程</a></li>-->
+<!--                        <li class="divider"></li>-->
+<!--                        <li><a href="#">试题</a></li>-->
+<!--                        <li><a href="#">模拟试题</a></li>-->
+<!--                        <li><a href="#">高考真题</a></li>-->
+
+
+<!--                    </ul>-->
+<!--                </li>-->
+<!--                <li><a href="/fuwu" style="color: white">服务</a></li>-->
+<!--                <li><a href="/zixunshi" style="color: white">咨询师</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+
+<!--        <form class="navbar-form navbar-left" style="position: absolute;right: 150px">-->
+<!--            <div class="form-group">-->
+<!--                <input type="text" class="form-control" placeholder="找大学/查专业">-->
+<!--            </div>-->
+<!--            <button type="submit" class="btn btn-default">搜索</button>-->
+<!--        </form>-->
+<!--        <div th:if="${session.user != null}" class="dropdown">-->
+<!--            <a href="#" class="dropdown-toggle text-position" data-toggle="dropdown" role="button"-->
+<!--               aria-haspopup="true" aria-expanded="false" style="color: white">-->
+<!--                <span th:text="${session.user.userName}"></span>-->
+<!--                <span class="caret"></span>-->
+<!--            </a>-->
+<!--            <ul class="dropdown-menu">-->
+<!--                <li><a href="/logout">退出登录</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div th:if="${session.user == null}">-->
+<!--             <span style="position: absolute;right: 20px;top:17px">-->
+<!--                <a href="/register" style="color: white">注册 |</a>-->
+<!--                <a href="/denglu" style="color: white"> 登录</a>-->
+<!--        </span>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+<div th:insert="navigation :: nav"></div>
+<div class="container" style="width: 100%">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="2000" style="margin-bottom: 20px" >
+        <!-- 轮播（Carousel）指标 -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+        </ol>
+        <!-- 轮播（Carousel）项目 -->
+        <div class="carousel-inner" >
+            <div class="item active">
+                <img src="http://img3.youzy.cn/content/media/thumbs/p00212394.jpeg" alt="First slide" style="height: 360px;width: 100%">
+            </div>
+            <div class="item">
+                <img src="http://img3.youzy.cn/content/media/thumbs/p00212971.jpeg" alt="Second slide" style="height: 360px;width: 100%">
+            </div>
+            <div class="item">
+                <img src="http://staticv2.youzy.cn/bBanner/pc/banner2.jpg" alt="Third slide" style="height: 360px;width: 100%">
+            </div>
+            <div class="item">
+                <img src="http://staticv2.youzy.cn/bBanner/pc/banner3.jpg" alt="Four slide" style="height: 360px;width: 100%">
+            </div>
+            <div class="item">
+                <img src="http://staticv2.youzy.cn/bBanner/pc/banner4.jpg" alt="Five slide" style="height: 360px;width: 100%">
+            </div>
+        </div>
+        <!-- 轮播（Carousel）导航 -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"  >
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" style="position: absolute;left:9px" ></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next" >
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" style="position: absolute;right:450px"></span>
+            <span class="sr-only">Next</span>
+        </a>
+
+
+
+        <div class="category-list"
+             style="width: 320px; float: right;background-color: rgba(225,225,225,0.5);margin-right: 0px">
+
+            <h3><span class="glyphicon glyphicon-menu-hamburger" style="margin-left: 20px;margin-top: 30px"></span>2020志愿模拟填报</h3>
+
+
+
+            <form action="" method="get" style="margin: 20px 20px">
+                <p style="margin-left: 20px;font-size: 16px">您所学习的科类？</p>
+                <label style="margin-left: 20px;font-size: 16px"><input name="subject" type="radio"
+                                                                        value=""/>理科 </label>
+                <label style="margin-left: 10px ;font-size: 16px"><input name="subject" type="radio"
+                                                                         value=""/>文科 </label>
+                <br>
+            </form>
+            <div class="center-justify">
+                <div class="sea-container" style="margin: 30px 30px">
+                    <!--                        <option value="1" disabled="disabled">北京</option>-->
+                    <select name="area" size="1" style="height: 30px">
+                        <option value="8" selected="selected">本一批</option>
+                        <option value="7">本二批</option>
+                        <option value="9">本三批</option>
+                    </select>
+                    <div style="float: left" >
+                        <form action="">
+                            <input type="text" name="search" class="blue-input"
+                                   style="height: 30px;width: 100px">
+
+                        </form>
+                    </div>
+
+
+
+                </div>
+
+                <input type="submit" value="模拟填报" class="small button" style="margin-left: 30px;width: 230px;height: 45px;
+                        background-color: chocolate;border: none;font-size: 18px">
+                </input>
+
+            </div>
+
+            </form>
+
+            </li>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-2" style="margin-left: 37px">
+        <div class="content-channel">
+
+        <ul class="channel-list clearfix" style="width: 344px;
+    margin-left: 0;margin-top: 0px;
+    height: 120px;">
+
+            <li style="margin-left: -20px">
+                <a href="#">
+                    <img src="//staticv3-pre.youzy.cn/ToB.PC/images/system/search1.png" alt="">
+                    <p>找大学</p>
+                </a>
+            </li>
+            <li style="margin-top: 14px">
+                <a href="#">
+                    <img src="//staticv3-pre.youzy.cn/ToB.PC/images/system/search2.png" alt="">
+                    <p>查专业</p>
+                </a>
+            </li>
+            <li style="margin-top: 24px">
+                <a href="#">
+                    <img src="//staticv3-pre.youzy.cn/ToB.PC/images/system/search3.png" alt="">
+                    <p>分数线</p>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+    </div>
+    <div class="col-md-8">
+        <div class="content-list">
+            <ul>
+                <li>
+                    <a href="#">
+                        <img src="http://staticv2.youzy.cn/imagestob/temp-pic/classrooms/12.jpg">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="http://staticv2.youzy.cn/imagestob/temp-pic/classrooms/10.jpg">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="http://staticv2.youzy.cn/imagestob/temp-pic/classrooms/8.jpg">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<div class="col-md-9" style="margin-left: -30px;margin-top: 20px" >
+    <div class="content-banner">
+        <div class="container">
+            <a href="#">
+                <img src="images/1.jpg" alt="">
+            </a>
+        </div>
+    </div>
+</div>
+<br>
+
+<div class="row"  >
+    <div class="col-md-4" style="margin: 40px 40px;background-color: #FFFFFF">
+
+        <div class="container-big">
+            <h2 style="font-size: 30px;margin-left: 5px;margin-top: 5px"><span class="glyphicon glyphicon-align-left"></span>高考工具箱</h2>
+            <a href="#" name="p1">
+
+            </a>
+            <ul class="news-list" >
+                <li style="height: 100px;width: 90px;float: left">
+                    <a href="#"><img src="//staticv3-pre.youzy.cn/ToB.PC/images/tools/v2/1.png" style="width: 33%;height: 50px"></a>
+                    <h5 style="margin-top:5px"><a href="#" style="color: darkslategrey">大学库</a></h5>
+                </li>
+                <li style="height: 100px;width: 90px;float: left">
+                    <a href="#"><img src="//staticv3-pre.youzy.cn/ToB.PC/images/tools/v2/2.png" style="width: 33%;height: 50px"></a>
+                    <h5 style="margin-top:5px"><a href="#" style="color: darkslategrey">专业库</a></h5>
+                </li >
+                <li style="height: 100px;width: 120px;float: left">
+                    <a href="#"><img src="//staticv3-pre.youzy.cn/ToB.PC/images/tools/v2/3.png"  style="width: 33%;height: 50px"></a>
+                    <h5 style="margin-top: 5px"><a href="#" style="color: darkslategrey">历年分数线</a></h5>
+                </li>
+                <li style="height: 100px;width: 120px;float: left">
+                    <a href="#"><img src="//staticv3-pre.youzy.cn/ToB.PC/images/tools/v2/4.png"  style="width: 33%;height: 50px"></a>
+                    <h5 style="margin-top: 5px"><a href="#" style="color: darkslategrey">学业测评</a></h5>
+                </li>
+                <li style="height: 100px;width: 120px;float: left">
+                    <a href="#"><img src="//staticv3-pre.youzy.cn/ToB.PC/images/tools/v2/5.png" style="width: 33%;height: 50px"></a>
+                    <h5 style="margin-top: 5px"><a href="#" style="color: darkslategrey">省控线</a></h5>
+                </li>
+                <li style="height: 100px;width: 120px;float: left">
+                    <a href="#"><img src="//staticv3-pre.youzy.cn/ToB.PC/images/tools/v2/6.png"  style="width: 33%;height: 50px"></a>
+                    <h5 style="margin-top:5px"><a href="#" style="color: darkslategrey">讲堂</a></h5>
+                </li>
+                <li style="height: 100px;width: 120px;float: left">
+                    <a href="#"><img src="//staticv3-pre.youzy.cn/ToB.PC/images/tools/v2/7.png" style="width: 33%;height: 50px"></a>
+                    <h5 style="margin-top:5px"><a href="#" style="color: darkslategrey">升学服务</a></h5>
+                </li>
+
+
+            </ul>
+
+        </div>
+    </div>
+    <div class="col-md-4" style="margin: 40px -60px;background-color: #FFFFFF">
+        <div class="container-big">
+            <ul class="zy">
+                <li>
+                    <a name="p2"></a>
+                    <h2 style="font-size: 30px ;margin: 10px 10px"><span class="glyphicon glyphicon-align-left"></span>高考咨询</h2>
+                    <a href="" style="float: right;color: #42495d">更多》</a>
+                    <a href="#"></a>
+
+                    <div class="list conNewsBox">
+
+                        <div class="list-box">
+                            <!--                      <p class="dot"></p>-->
+                            <div class="marker"></div>
+                            <div class="txt">
+                                <a href="/news/detail?id=5e5687f5e65e51793791a859" target="_blank" title="高中历史三大复习方法"
+                                   class="14">
+                                    高中历史三大复习方法</a>
+                                <p class="time f12"><i class="icon-time mr5"></i><i>
+                                    23小时前</i>
+                                    <i class="fa fa-eye ml10 mr5"></i>483
+
+                                </p>
+
+                            </div>
+                        </div>
+
+
+                        <div class="list-box">
+                            <div class="marker"></div>
+                            <div class="txt">
+                                <a href="/news/detail?id=5e5687f5e65e51793791a877" target="_blank" title="2020高考气候类问题考点（五）"
+                                   class="14">
+                                    2020高考气候类问题考点（五）</a>
+                                <p class="time f12"><i class="icon-time mr5"></i><i>
+                                    昨天</i>
+
+                                    <i class="fa fa-eye ml10 mr5"></i>956
+
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="list-box">
+                            <div class="marker"></div>
+                            <div class="txt">
+                                <a href="/news/detail?id=5e5687f5e65e51793791a87e" target="_blank" title="2020高考气候类问题考点（四）"
+                                   class="14">
+                                    2020高考气候类问题考点（四）</a>
+                                <p class="time f12"><i class="icon-time mr5"></i><i>
+                                    昨天</i>
+
+                                    <i class="fa fa-eye ml10 mr5"></i>453
+
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="list-box">
+                            <div class="marker"></div>
+                            <div class="txt">
+                                <a href="/news/detail?id=5e5687f5e65e51793791a889" target="_blank" title="2020年高考数学复习三大技巧"
+                                   class="14">
+                                    2020年高考数学复习三大技巧</a>
+                                <p class="time f12"><i class="icon-time mr5"></i><i>
+                                    昨天</i>
+
+                                    <i class="fa fa-eye ml10 mr5"></i>798
+
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="list-box">
+                            <div class="marker"></div>
+                            <div class="txt">
+                                <a href="/news/detail?id=5e5687f5e65e51793791a897" target="_blank" title="2020年高考数学复习方法"
+                                   class="14">
+                                    2020年高考数学复习方法</a>
+                                <p class="time f12"><i class="icon-time mr5"></i><i>
+                                    昨天</i>
+
+                                    <i class="fa fa-eye ml10 mr5"></i>1090
+
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-4" style="margin: 40px 0px;background-color: #FFFFFF">
+        <div class="container-big">
+            <ul class="zy">
+                <li>
+                    <h2 style="font-size: 30px ;margin: 10px 10px" name="p2"><span class="glyphicon glyphicon-align-left"></span>专家团队</h2>
+
+                    <a href="#"></a>
+                    <div class="media" style="margin-top: 10px">
+                        <div class="media-left">
+                            <img src="http://img3.youzy.cn/content/media/thumbs/p00212161.jpeg" class="media-object" style="width:60px;border-radius: 25px">
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">孙老师</h4>
+                            <p>志愿填报,高招政策,学业规划</p>
+                            <input type="button" value="预约" style="float: right">
+                        </div>
+                    </div>
+                    <div class="media" style="margin-top: 10px">
+                        <div class="media-left">
+                            <img src="http://img3.youzy.cn/content/media/thumbs/p00212356.jpeg" class="media-object" style="width:60px;border-radius: 25px">
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">杜老师</h4>
+                            <p>志愿填报,高招政策,学业规划</p>
+                            <input type="button" value="预约" style="float: right">
+                        </div>
+                    </div>
+                    <div class="media" style="margin-top: 10px">
+                        <div class="media-left">
+                            <img src="http://img3.youzy.cn/content/media/thumbs/p00212358.jpeg" class="media-object" style="width:60px;border-radius: 25px">
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">杨老师</h4>
+                            <p>志愿填报,高招政策,学业规划</p>
+                            <input type="button" value="预约" style="float: right">
+                        </div>
+                    </div>
+
+
+
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<footer class="ui inverted vertical segment m-padded-tb-massive">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided stackable grid">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="../static/images/wechat.jpg" class="ui rounded image" alt="" style="width: 110px">
+                    </div>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced " >关于我们</h4>
+
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced ">联系我们</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item m-text-thin">服务热线： 18629648756</a>
+                    <a href="#" class="item m-text-thin">营业时间： 9:00~21:00</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced ">法律声明</h4>
+
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced m-opacity-tiny">UP志愿专家 西安阿谱云教育科技有限公司版权所有陕ICP备20000936号 © 2012- 2020</p>
+    </div>
+
+</footer>
+
+</body>
+</html>

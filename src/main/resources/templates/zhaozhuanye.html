@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>找专业</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/me.css">
+    <style>
+        body{
+            background-color: whitesmoke;
+        }
+        .title {
+            margin-top: 10px;
+            /*margin-left: 280px;*/
+            text-align: center;
+        }
+
+        .dropdown active{
+            background-color: #b0b0b0;
+        }
+
+
+        .up{
+            height: 440px;
+            width: 80%;
+
+            margin-left: 20px;
+            border:#b0b0b0 1px solid;
+        }
+
+        .down{
+            height: 440px;
+            width: 80%;
+            border: #b0b0b0 1px solid;
+            margin-left: 20px;
+            margin-top:25px;
+        }
+
+        .xueke{
+            float: left;
+            margin-left: 20px;
+            width: 145px;
+            margin-top: 10px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div th:insert="navigation :: nav"></div>
+
+<ul class="breadcrumb" style="margin-top: -20px;background-color: white">
+    <span class="glyphicon glyphicon-pawn"></span>
+    <li><a href="#">首页</a></li>
+    <li><a href="#">查专业</a></li>
+
+</ul>
+
+<div class="container" style="width: 100%;background-color: #FFFFFF">
+
+    <div class="col-lg-9" style="margin-bottom: 60px;margin-top: 40px">
+
+            <form action="/majors">
+                <input  class="sr" type="text" name="profession" style="float: left;border-radius: 0px;width:700px;height: 40px;margin-left: 50px" placeholder="输入关键词">
+                <input  class="btn" type="submit" style="float: left;border-radius: 0px;height: 40px" value="搜索">
+            </form>
+
+
+        <ul id="myTab" class="nav nav-tabs" style="margin: 60px 50px">
+            <li class="active">
+                <a href="#home" data-toggle="tab">
+                    本科专业
+                </a>
+            </li>
+            <li><a href="#ios" data-toggle="tab">专科专业</a></li>
+
+        </ul>
+        <div id="myTabContent" class="tab-content" style="margin-left: 50px;margin-top: -20px">
+            <div class="tab-pane fade in active" id="home">
+                <a  href="">哲学</a>
+                <a  href="">经济学</a>
+                <a  href="">法学</a>
+                <a href="">教育学</a>
+                <a href="">文学</a>
+                <a href="">历史学</a>
+                <a href="">理学</a>
+                <a href="">工学</a>
+                <a href="">农学</a>
+                <a href="">医学</a>
+                <a href="">管理学</a>
+                <a href="">艺术学</a>
+            </div>
+            <div class="tab-pane fade" id="ios">
+                <a href="">农林牧渔类</a>
+                <a href="">资源环境与安全类</a>
+                <a href=""> 能源动力与材料类</a>
+                <a href="">土木建筑类</a>
+                <a href=""> 水利类</a>
+                <a href="">装备制造类</a>
+                <a href="">生物与化工类</a>
+                <a href="">轻工纺织类</a>
+                <a href="">食品药品与粮食类</a><br>
+                <a href="">交通运输类</a>
+                <a href="">电子信息类</a>
+                <a href="">医疗卫生类</a>
+                <a href="">财经商贸类</a>
+                <a href="">旅游类</a>
+                <a href=""> 文化艺术类</a>
+                <a href="">新闻传播类</a>
+                <a href="">管理教育与体育类</a>
+                <a href="">公安与司法类</a><br>
+                <a href=""> 公共管理与服务类</a>
+            </div>
+
+        </div>
+
+
+
+
+        <div class="panel panel-default" style="width: 87%;margin-left: 47px;margin-top: 30px;border-color: white" th:each="major:${majors}">
+            <!-- Default panel contents -->
+            <div class="panel-heading" style="font-size: 24px;height: 60px" th:text="${major.major}"></div>
+<!--            <div class="panel-heading" style="font-size: 24px;height: 60px" >哲学</div>-->
+            <div class="panel-body">
+                <p style=" font-size: 18px;margin-left: 10px" th:text="${major.subject}"></p>
+<!--                <p style=" font-size: 18px;margin-left: 10px" >哲学类</p>-->
+            </div>
+            <!-- List group -->
+            <ul class="list-group" >
+                <a th:href="@{'/profession_desc/'+${major.pid}}">
+                    <li class="xueke"  th:text="${major.proname}" ></li>
+                </a>
+            </ul>
+        </div>
+
+
+
+
+<!--        <div class="panel panel-default" style="width: 87%;margin-left: 47px;margin-top: 30px;border-color: white">-->
+<!--            &lt;!&ndash; Default panel contents &ndash;&gt;-->
+<!--            <div class="panel-heading" style="font-size: 24px;height: 60px">||哲学</div>-->
+<!--            <div class="panel-body">-->
+<!--                <p style=" font-size: 18px;margin-left: 10px" >哲学类</p>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; List group &ndash;&gt;-->
+<!--            <ul class="list-group" th:each="major:${majors}">-->
+<!--                <li class="xueke" th:if="${major.pid} ge 1  and ${major.pid} le 4" th:text="${major.proname}">哲学</li>-->
+
+<!--            </ul>-->
+<!--        </div>-->
+        <br>
+
+    </div>
+
+
+
+    <div class="col-lg-3" style="margin-bottom: 30px">
+
+<div class="up" style="margin-top: 40px">
+    <div class="panel panel-default">
+        <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>大家都在报 <a style="float: right">更多 <span class="glyphicon glyphicon-option-vertical"></span></a></div>
+        <ul class="list-group">
+            <li class="list-group-item">1.临床医学</li>
+            <li class="list-group-item">2.中医学</li>
+            <li class="list-group-item">3.口腔医学</li>
+            <li class="list-group-item">4.心理咨询</li>
+            <li class="list-group-item">5.城市轨道交通工程技术</li>
+            <li class="list-group-item">6.医学营养</li>
+            <li class="list-group-item">7.工程造价</li>
+            <li class="list-group-item">8.护理</li>
+            <li class="list-group-item">9.工程设计</li>
+            <li class="list-group-item">10.汽车改装技术</li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+        <div class="down">
+            <div class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span>就业前景<a style="float: right">更多 <span class="glyphicon glyphicon-option-vertical"></span></a></div>
+                <ul class="list-group">
+                    <li class="list-group-item">1.水文与水资源工程</li>
+                    <li class="list-group-item">2.水电站动力设备</li>
+                    <li class="list-group-item">3.高分子合成技术</li>
+                    <li class="list-group-item">4.风景园林设计</li>
+                    <li class="list-group-item">5.会计信息管理</li>
+                    <li class="list-group-item">6.市场营销</li>
+                    <li class="list-group-item">7.绿色食品生产与检验</li>
+                    <li class="list-group-item">8.信息统计与分析</li>
+                    <li class="list-group-item">9.水电站与电力网</li>
+                    <li class="list-group-item">10.古建筑工程技术</li>
+                </ul>
+            </div>
+
+    </div>
+</div>
+</div>
+
+<footer class="ui inverted vertical segment m-padded-tb-massive" style="margin-top: 40px">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided stackable grid">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="../static/images/wechat.jpg" class="ui rounded image" alt="" style="width: 110px">
+                    </div>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced " >关于我们</h4>
+
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced ">联系我们</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item m-text-thin">服务热线： 18629648756</a>
+                    <a href="#" class="item m-text-thin">营业时间： 9:00~21:00</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced ">法律声明</h4>
+
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced m-opacity-tiny">UP志愿专家 西安阿谱云教育科技有限公司版权所有陕ICP备20000936号 © 2012- 2020</p>
+    </div>
+
+</footer>
+</body>
+</html>

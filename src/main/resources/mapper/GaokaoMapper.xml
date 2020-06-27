@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="practice02_back.mapper.GaokaoMapper">
+
+    <resultMap id="proAndCalendarData" type="gaokao">
+        <result property="scid" column="scid"/>
+        <result property="average" column="average"/>
+        <result property="year" column="year"/>
+        <result property="min" column="min"/>
+        <result property="min_section" column="min_section"/>
+        <result property="max" column="max"/>
+        <result property="local_province_name" column="local_province_name"/>
+        <result property="local_batch_name" column="local_batch_name"/>
+        <result property="spname" column="spname"/>
+        <result property="name" column="name"/>
+        <result property="local_type_name" column="local_type_name"/>
+        <result property="proscore" column="proscore"/>
+        <result property="type" column="type"/>
+        <association property="profession" javaType="Profession">
+            <result property="proname" column="proname"/>
+            <result property="timelength" column="timelength"/>
+            <result property="sort" column="sort"/>
+            <result property="pid" column="pid"/>
+        </association>
+    </resultMap>
+
+
+    <select id="getProAndCalendarData" resultMap="proAndCalendarData">
+        SELECT *
+        FROM `zhiyuan`.`gaokao` g,
+             `zhiyuan`.`profession` p
+        where g.spname like concat('%',p.proname,'%')
+          and g.`name` = #{schoolName}
+        GROUP BY p.proname
+
+    </select>
+
+
+    <select id="selectSch" resultType="gaokao">
+        select * from zhiyuan.gaokao
+        <where>
+            <if test="province != null">
+                areaname like concat(#{province},'%')
+            </if>
+            <if test="type != null">
+                and type =#{type}
+            </if>
+        </where>
+
+    </select>
+
+    <select id="getSchoolByProname" resultType="gaokao">
+        select distinct g.name,g.scid
+        from zhiyuan.gaokao g
+        where g.spname like concat('%', #{proname}, '%')
+    </select>
+
+</mapper>

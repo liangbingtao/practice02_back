@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>我的测评</title>
+
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/me.css">
+
+    <style>
+        body{
+            background-color: whitesmoke;
+        }
+        .title {
+            margin-top: 10px;
+            /*margin-left: 280px;*/
+            text-align: center;
+        }
+
+        .dropdown active{
+            background-color: #b0b0b0;
+        }
+
+
+
+        .lb{
+            width: 100%;
+            margin-top: 10px;
+        }
+        .lb a{
+            float: left;
+            font-size: 15px;
+            margin-left: 8px;
+        }
+        .lb span{
+            float: left;
+            margin-left: 8px;
+        }
+
+        .zd a {
+            width: 50px;
+            height: 50px;
+            background-color: #42495d;
+            color: #b0b0b0;
+            font-size: 15px;
+        }
+
+
+
+
+
+
+    </style>
+    <div th:insert="navigation :: nav"></div>
+
+    <ul class="breadcrumb" style="margin-top: -20px;background-color: white">
+        <span class="glyphicon glyphicon-pawn"></span>
+        <li><a href="#">首页</a></li>
+        <li><a href="#">选择报考批次</a></li>
+
+    </ul>
+
+    <div class="container" style="background-color: #FFFFFF;width: 1260px;height: 630px">
+
+        <div class="col-lg-3" style="margin-left: -30px">
+            <img src="http://staticv2.youzy.cn/images/usercenter/head-bg1.jpg" alt="">
+
+            <div class="lb">
+                <a href="">关注院校</a>
+                <span>|</span>
+                <a href="">关注专业</a>
+                <span>|</span>
+                <a href="">成绩</a>
+                <span>|</span>
+            </div>
+
+
+            <ul class="list-group" style="margin-top: 40px">
+                <li class="list-group-item"><a href="zhinengtianbao.html">应用广场</a></li>
+                <li class="list-group-item"><a href="zixunshi.html">专家预约</a></li>
+                <li class="list-group-item"><a href="myceping.html">我的测评</a></li>
+                <li class="list-group-item"><a href="myfuwu.html">我的服务</a></li>
+                <li class="list-group-item"><a href="">我的选科</a></li>
+                <li class="list-group-item"><a href="">我的职业</a></li>
+                <li class="list-group-item"><a href="">我的志愿表</a></li>
+            </ul>
+
+        </div>
+
+
+
+
+
+        <div class="col-lg-9">
+            <p style="font-size: 24px;margin-left: 30px;margin-top: 20px">我的测评</p>
+            <hr style="width: 95%">
+            <p style="margin-left: 30px;">专业定位测评</p>
+            <hr style="width: 95%">
+            <p style="margin-left: 30px;">专业定位测评</p>
+            <hr style="width: 95%">
+
+            <ul class="pagination pagination-lg" style="margin: 30px 290px">
+                <li ><a href="#">&laquo;</a></li>
+                <li class="active"><a href="#" class="active">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&raquo;</a></li>
+            </ul><br>
+
+
+
+        </div>
+
+
+    </div>
+    <footer class="ui inverted vertical segment m-padded-tb-massive" style="margin-top: 20px">
+        <div class="ui center aligned container">
+            <div class="ui inverted divided stackable grid">
+                <div class="three wide column">
+                    <div class="ui inverted link list">
+                        <div class="item">
+                            <img src="../static/images/wechat.jpg" class="ui rounded image" alt="" style="width: 110px">
+                        </div>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced " >关于我们</h4>
+
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced ">联系我们</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item m-text-thin">服务热线： 18629648756</a>
+                        <a href="#" class="item m-text-thin">营业时间： 9:00~21:00</a>
+                    </div>
+                </div>
+                <div class="seven wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced ">法律声明</h4>
+
+                </div>
+            </div>
+            <div class="ui inverted section divider"></div>
+            <p class="m-text-thin m-text-spaced m-opacity-tiny">UP志愿专家 西安阿谱云教育科技有限公司版权所有陕ICP备20000936号 © 2012- 2020</p>
+        </div>
+
+    </footer>
+</head>
+<body>
+
+</body>
+</html>

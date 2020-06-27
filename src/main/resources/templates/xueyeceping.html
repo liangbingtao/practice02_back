@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>学业测评</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="/static/css/me.css">
+
+    <style>
+        body{
+            background-color: whitesmoke;
+        }
+        .title {
+            margin-top: 10px;
+            /*margin-left: 280px;*/
+            text-align: center;
+        }
+
+        body {
+            background-color: whitesmoke;
+        }
+
+        .ceping {
+            width: 1260px;
+            hight: 900px;
+            background-color: #FFFFFF;
+            margin: 20px 40px;
+        }
+
+        .ceping img {
+
+            width: 1160px;
+            height: 400px;
+margin-top: -20px;
+            padding: 10px;
+        }
+
+
+        .sumbit {
+            position: absolute;
+            z-index: 2;
+            left: 120px;
+            top: 280px;
+            width: 180px;
+            height: 50px;
+            color: #dea0a9;
+            background-color: #FFFFFF;
+            border: none;
+            font-size: 18px;
+            border-radius: 12px;
+        }
+
+        .last {
+
+            width: 1260px;
+            margin-left: 40px;
+            overflow: hidden;
+            height: 590px;
+            background-color: #FFFFFF;
+            padding: 0px;
+            margin-top: 20px;
+
+        }
+
+        .container-big {
+            width: 580px;
+            height: 230px;
+            float: left;
+            margin-top: 20px;
+            background-color: #008888;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #fff2a5;
+            margin-left: 35px;
+        }
+
+        .container-big img {
+            width: 580px;
+            height: 100%;
+        }
+
+        .cs {
+            color: #dea0a9;
+            background-color: white;
+
+            width: 80px;
+            height: 45px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #fff2a5;
+        }
+
+        .di {
+            width: 1260px;
+            height: 320px;
+            background-color: #FFFFFF;
+            margin: 30px 40px;
+
+        }
+
+
+
+
+     .col-md-5{
+         background: url('http://www.upcloudedu.cn/images/tests/5a1/360EvaBg1.png');
+         height: 230px;
+         margin-left: 70px;
+         margin-top: 20px;
+         border-style: solid;
+         border-width: 1px;
+         border-color: #fff2a5;
+
+     }
+
+
+
+
+    </style>
+
+
+
+</head>
+<body>
+<div th:insert="navigation :: nav"></div>
+<ul class="breadcrumb" style="margin-top: -20px;background-color: white">
+    <span class="glyphicon glyphicon-pawn"></span>
+    <li><a href="#">首页</a></li>
+    <li><a href="#">学业测评</a></li>
+
+</ul>
+
+<div class="container" style="width: 1260px;background-color: #FFFFFF">
+    <p style="margin-left:  20px;padding-top:10px;font-size: 25px"><span class="glyphicon glyphicon-menu-hamburger"></span>专业测评</p>
+    <div style="position:relative;">
+
+        　　<img src="http://www.upcloudedu.cn/images/tests/5a1/evaBg.png" style="margin-left: 5px;margin-bottom: 20px"/>
+
+        　　
+        <div style="position:absolute; z-index:2; left:100px; top:76px;color: #FFFFFF;font-size: 38px">专业定位测试</div>
+        <div style="position:absolute; z-index:2; left:120px; top:160px;width: 700px; color: #FFFFFF;font-size: 20px">
+            从“兴趣”、“性格”、“能力”、“学科强弱”、“职业倾向”
+            五大维度充分认知自己，依据测评结果推荐适合孩子的专业。
+        </div>
+
+        <input class="sumbit" type="button" value="开始测评" onclick="jump()"/>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="container" style="background-color: #FFFFFF;width: 1260px;margin-top: 20px;">
+    <p style="margin: 10px 10px;font-size: 25px"><span class="glyphicon glyphicon-menu-hamburger"></span>学习状态</p>
+    <div class="col-md-5">
+<!--        <img style="z-index: 1" src="http://www.upcloudedu.cn/images/tests/5a1/360EvaBg1.png">-->
+        <div style="z-index:2;margin-top: 30px">
+            <a href="" style="color: #008888;font-size: 30px;">考试心理和行为测评</a></div>
+        <div style=" color: #42495d;font-size: 18px;margin-top: 10px">考试总是发挥失常？</div>
+        <input style="margin-top: 80px;margin-left: 30px" class="btn btn-primary" type="button" value="开始测评"
+               onclick="jump()"/>
+        <div style="z-index:2; color: gray;font-size: 14px;margin-left: 130px;margin-top: -25px">已有3877899人参与
+        </div>
+    </div>
+    <div class="col-md-5">
+            <div style="z-index:2;margin-top: 30px">
+                <a href="" style="color: #008888;font-size: 30px;">学习拖延测评</a></div>
+            <div style=" color: #42495d;font-size: 18px;margin-top: 10px">提到学习就焦虑害怕？</div>
+            <input style="margin-top: 80px;margin-left: 30px" class="btn btn-primary" type="button" value="开始测评"
+                   onclick="jump()"/>
+        <div style="z-index:2; color: gray;font-size: 14px;margin-left: 130px;margin-top: -25px">已有3877899人参与
+        </div>
+
+    </div>
+    <div class="col-md-5">
+        <div style="z-index:2;margin-top: 30px">
+            <a href="" style="color: #008888;font-size: 30px;">考试倦怠测评</a></div>
+        <div style=" color: #42495d;font-size: 18px;margin-top: 10px">提到学习就乏力？</div>
+        <input style="margin-top: 80px;margin-left: 30px" class="btn btn-primary" type="button" value="开始测评"
+               onclick="jump()"/>
+        <div style="z-index:2; color: gray;font-size: 14px;margin-left: 130px;margin-top: -25px">已有3877899人参与
+        </div>
+
+    </div>
+    <div class="col-md-5" style="margin-bottom: 40px">
+        <div style="z-index:2;margin-top: 30px">
+            <a href="" style="color: #008888;font-size: 30px;">学习能力测评</a></div>
+        <div style=" color: #42495d;font-size: 18px;margin-top: 10px">成绩提示有方法</div>
+        <input style="margin-top: 80px;margin-left: 30px" class="btn btn-primary" type="button" value="开始测评"
+               onclick="jump()"/>
+        <div style="z-index:2; color: gray;font-size: 14px;margin-left: 130px;margin-top: -25px">已有3877899人参与
+        </div>
+
+    </div>
+
+
+
+</div>
+
+<div class="container" style="background-color: #FFFFFF;width: 1260px;margin-top: 20px">
+    <p style="margin:10px 10px;font-size: 25px"><span class="glyphicon glyphicon-menu-hamburger"></span>心理健康</p>
+    <div class="col-md-5">
+
+        <div style="z-index:2;margin-top: 30px">
+            <a href="" style="color: #008888;font-size: 30px;">自我控制能力测评</a></div>
+        <div style=" color: #42495d;font-size: 18px;margin-top: 10px"> 测量对自己的行为、情绪和认知约束和管理的能力</div>
+        <input style="margin-top: 80px;margin-left: 30px" class="btn btn-primary" type="button" value="开始测评"
+               onclick="jump()"/>
+        <div style="z-index:2; color: gray;font-size: 14px;margin-left: 130px;margin-top: -25px">已有3877899人参与
+        </div>
+    </div>
+    <div class="col-md-5" style="margin-bottom: 40px">
+
+        <div style="z-index:2;margin-top: 30px">
+            <a href="" style="color: #008888;font-size: 30px;">家庭教育测评</a></div>
+        <div style=" color: #42495d;font-size: 18px;margin-top: 10px"> 青春的孩子应如何教育？</div>
+        <input style="margin-top: 80px;margin-left: 30px" class="btn btn-primary" type="button" value="开始测评"
+               onclick="jump()"/>
+        <div style="z-index:2; color: gray;font-size: 14px;margin-left: 130px;margin-top: -25px">已有3877899人参与
+        </div>
+    </div>
+
+</div>
+
+<footer class="ui inverted vertical segment m-padded-tb-massive" style="margin-top: 40px">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided stackable grid">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="../static/images/wechat.jpg" class="ui rounded image" alt="" style="width: 110px">
+                    </div>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced " >关于我们</h4>
+
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced ">联系我们</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item m-text-thin">服务热线： 18629648756</a>
+                    <a href="#" class="item m-text-thin">营业时间： 9:00~21:00</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced ">法律声明</h4>
+
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced m-opacity-tiny">UP志愿专家 西安阿谱云教育科技有限公司版权所有陕ICP备20000936号 © 2012- 2020</p>
+    </div>
+
+</footer>
+</body>
+
+<script>
+    function jump() {
+        window.location.href = "top.html";
+    }
+</script>
+</html>

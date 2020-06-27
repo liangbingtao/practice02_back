@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>讲堂</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/me.css">
+    <style>
+        body{
+            background-color: whitesmoke;
+        }
+        .title {
+            margin-top: 10px;
+            /*margin-left: 280px;*/
+            text-align: center;
+        }
+
+
+        .dropdown active{
+            background-color: #b0b0b0;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div th:insert="navigation :: nav"></div>
+<ul class="breadcrumb" style="margin-top: -20px;background-color: white">
+    <span class="glyphicon glyphicon-pawn"></span>
+    <li><a href="#">首页</a></li>
+    <li><a href="#">讲堂</a></li>
+
+</ul>
+
+<div class="container" style="background-color: #FFFFFF;width: 1260px">
+    <p style="padding-top:20px;margin-left:15px;font-size: 26px"><span class="glyphicon glyphicon-menu-hamburger"></span>讲堂</p>
+
+    <div class="row">
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <img src="http://staticv2.youzy.cn/imagestob/temp-pic/classrooms/12.jpg"
+                     alt="通用的占位符缩略图">
+                <div class="caption">
+                    <h5><a href=subject.html>省控线与省批线</a></h5>
+                    <span class="label label-success">免费</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <img src="http://staticv2.youzy.cn/imagestob/temp-pic/classrooms/5.jpg"
+                     alt="通用的占位符缩略图">
+                <div class="caption">
+                    <h5>服从专业调剂</h5>
+                    <span class="label label-success">免费</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <img src="http://staticv2.youzy.cn/imagestob/temp-pic/classrooms/10.jpg"
+                     alt="通用的占位符缩略图">
+                <div class="caption">
+                    <h5>分数线和投档线</h5>
+                    <span class="label label-success">免费</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <img src="http://staticv2.youzy.cn/imagestob/temp-pic/classrooms/9.jpg"
+                     alt="通用的占位符缩略图">
+                <div class="caption">
+                    <h5>分数清、专业清、专业级差区别</h5>
+                    <span class="label label-success">免费</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <img src="http://staticv2.youzy.cn/imagestob/temp-pic/classrooms/8.jpg"
+                     alt="通用的占位符缩略图">
+                <div class="caption">
+                    <h5>专业级差</h5>
+                    <span class="label label-success">免费</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <img src="http://staticv2.youzy.cn/imagestob/temp-pic/classrooms/7.jpg"
+                     alt="通用的占位符缩略图">
+                <div class="caption">
+                    <h5>专业清</h5>
+                    <span class="label label-success">免费</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <img src="http://staticv2.youzy.cn/imagestob/temp-pic/classrooms/6.jpg"
+                     alt="通用的占位符缩略图">
+                <div class="caption">
+                    <h5>分数清</h5>
+                    <span class="label label-success">免费</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <img src="http://staticv2.youzy.cn/imagestob/temp-pic/classrooms/4.jpg"
+                     alt="通用的占位符缩略图">
+                <div class="caption">
+                    <h5>大小年现象</h5>
+                    <span class="label label-success">免费</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <img src="http://staticv2.youzy.cn/imagestob/temp-pic/classrooms/3.jpg"
+                     alt="通用的占位符缩略图">
+                <div class="caption">
+                    <h5>大类招生</h5>
+                    <span class="label label-success">免费</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <img src="http://staticv2.youzy.cn/imagestob/temp-pic/classrooms/3.jpg"
+                     alt="通用的占位符缩略图">
+                <div class="caption">
+                    <h5>大类招生</h5>
+                    <span class="label label-success">免费</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <img src="http://staticv2.youzy.cn/imagestob/temp-pic/classrooms/1.jpg"
+                     alt="通用的占位符缩略图">
+                <div class="caption">
+                    <h5>录取批次</h5>
+                    <span class="label label-success">免费</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<ul class="pagination pagination-lg" style="margin: 30px 510px">
+    <li ><a href="#">&laquo;</a></li>
+    <li class="active"><a href="#" class="active">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">&raquo;</a></li>
+</ul><br>
+
+<footer class="ui inverted vertical segment m-padded-tb-massive" style="margin-top: 20px">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided stackable grid">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="../static/images/wechat.jpg" class="ui rounded image" alt="" style="width: 110px">
+                    </div>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced " >关于我们</h4>
+
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced ">联系我们</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item m-text-thin">服务热线： 18629648756</a>
+                    <a href="#" class="item m-text-thin">营业时间： 9:00~21:00</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced ">法律声明</h4>
+
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced m-opacity-tiny">UP志愿专家 西安阿谱云教育科技有限公司版权所有陕ICP备20000936号 © 2012- 2020</p>
+    </div>
+
+</footer>
+</body>
+</html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>找大学</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+    <style>
+        body{
+            background-color: whitesmoke;
+        }
+
+        .title {
+            margin-top: 10px;
+            /*margin-left: 280px;*/
+            text-align: center;
+        }
+
+        .dropdown active{
+            background-color: #b0b0b0;
+        }
+
+
+        .bq{
+            margin-left: 60px;
+        }
+
+        .bq a{
+            margin-left: 40px;
+        }
+        .dq{
+            margin-left: 40px;
+            margin-top: 30px;
+
+        }
+        input[type="checkbox"] {
+
+            display: none;
+        }
+
+        input[type="checkbox"] + span {
+            display: inline-block;
+            width: 60px;
+            height: 27px;
+            font-size: 15px;
+            /*line-height: 50px;*/
+            text-align: center;
+            border: 1px solid #cccccc;
+            background-color: #fff;
+            margin-left: -5px;
+            padding-top: 4px;
+            /*margin: 24px 0px;*/
+            /*border-radius: 25px;*/
+        }
+
+        input[type="checkbox"]:checked + span {
+            /*border: 1px solid #090;*/
+            background-color: #cacacd;
+        }
+
+        .schooltitle span{
+            /*margin-left: 0px;*/
+            margin-right: 5px;
+        }
+        .cadrborder{
+            margin-top: 20px;
+            border: 1px solid #b1afaf;
+            -webkit-border-radius: 10px;
+        }
+
+        .schooltitle {
+            padding: 0px 0px;
+            list-style: none;
+            border-radius: 4px
+        }
+        .schooltitle > li {
+            display: inline-block
+        }
+
+        .schooltitle > li + li:before {
+            padding: 0 5px;
+            color: #ccc;
+            content: "/\00a0"
+        }
+        .schooltitle > .active {
+            color: #777
+        }
+        .cadrborder div{
+            padding-top: 5px;
+        }
+
+        form button{
+            width: 100%;
+            margin-top: 10px
+        }
+
+    </style>
+</head>
+<body>
+<div th:insert="navigation :: nav"></div>
+
+<ul class="breadcrumb" style="margin-top: -20px;background-color: white">
+    <span class="glyphicon glyphicon-pawn"></span>
+    <li><a href="/">首页</a></li>
+    <li><a href="/schoolHomepage">找大学</a></li>
+
+</ul>
+
+<div class="container" style="width: 100%;background-color: #FFFFFF;">
+
+    <div class="col-lg-10 col-lg-offset-1">
+        <div class="col-lg-9 " style="margin-bottom: 30px">
+            <div class="ss" style="margin: 30px 0px">
+                <form action="/schoolsearch">
+                    <input  class="sr" name="schoolname" type="text" style="float: left;border-radius: 0px;width:700px;height: 40px;margin-left: 20px" placeholder="输入关键词">
+                    <input  class="btn" type="submit" style="float: left;border-radius: 0px;height: 40px;width: 70px;margin-left: 5px" value="搜索">
+                </form>
+                <br>
+                <br>
+
+                <br>
+                <div class="bq">
+
+                    <a href="">热门院校</a>
+                    <a href="">工商管理</a>
+                    <a href="">口腔医学</a>
+                    <a href="">临床医学</a>
+                </div>
+            </div>
+
+            <div class="schoolList">
+                <div class="container-fluid">
+                    <ul style="margin-bottom: 22px;padding-left: 0"  th:each="school:${allschool.schools}">
+                        <div class="media">
+                            <a class="pull-left" th:href="@{'/school_desc_l/'+${school.scid}}">
+                                <img class="media-object"
+                                     src="http://img1.youzy.cn/content/media/thumbs/p00189371.jpeg"
+                                     style="width: 60px;height: 60px">
+                            </a>
+
+                            <div class="media-body" >
+                                <a th:href="@{'/school_desc_l/'+${school.scid}}">
+                                    <h3 class="media-heading" th:text="${school.name}"></h3>
+                                </a>
+                            </div>
+                            <ol class="schooltitle">
+                                <li class="active" th:text="${school.type}"></li>
+                                <li class="active" th:text="${school.department}"></li>
+                                <li class="active" th:text="${school.areaname}"></li>
+                                <li class="active" style="color: #3889d4">热度：</li>
+                            </ol>
+                            <ol class="schooltitle">
+                                         <span class="label label-primary" style="margin-left: 0px"
+                                               th:if="${school.is985 == 985}">985</span>
+                                <span class="label label-primary" th:if="${school.is211 == 211}">211</span>
+                                <span class="label label-primary"
+                                      th:if="${school.isDoubleFirstClass == 1}">双一流</span>
+                            </ol>
+                        </div>
+                        <hr>
+                    </ul>
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li th:if="${allschool.showFirstPage}">
+                                <a th:href="@{/schoolHomepage(page=1,areaId=${areaId},type=${type},is211=${is211},is985=${is985},isdoublefirstclass=${isdoublefirstclass})}"
+                                   aria-label="FirstPage">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a >
+                            </li>
+                            <li th:if="${allschool.showPrevious}">
+                                <a th:href="@{/schoolHomepage(page=${allschool.page - 1},areaId=${areaId},type=${type},is211=${is211},is985=${is985},isdoublefirstclass=${isdoublefirstclass})}"
+                                   aria-label="Previous">
+                                    <span aria-hidden="true">&lt;</span>
+                                </a>
+                            </li>
+
+
+                            <li th:each="page : ${allschool.pages}" th:class="${allschool.page == page}? 'active' : ''">
+                                <a th:href="@{/schoolHomepage(page=${page},areaId=${areaId},type=${type},is211=${is211},is985=${is985},isdoublefirstclass=${isdoublefirstclass})}"
+                                   th:text="${page}"></a>
+                            </li>
+
+                            <li th:if="${allschool.showNext}">
+                                <a th:href="@{schoolHomepage(page=${allschool.page + 1},areaId=${areaId},type=${type},is211=${is211},is985=${is985},isdoublefirstclass=${isdoublefirstclass})}"
+                                   aria-label="Next">
+                                    <span aria-hidden="true">&gt;</span>
+                                </a>
+                            </li>
+                            <li th:if="${allschool.showEndPage}">
+                                <a th:href="@{/schoolHomepage(page=${allschool.totalPage},areaId=${areaId},type=${type},is211=${is211},is985=${is985},isdoublefirstclass=${isdoublefirstclass})}"
+                                   aria-label="EndPage">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-lg-3" style="margin-bottom: 30px">
+            <div class="dq">
+
+                <form action="/schoolHomepage" style="font-size: 16px">
+                    <div class="cadrborder">
+                        <div style="padding-left: 28px;">
+                            <label><input type="checkbox" name="areaId" value="-1"/><span>不限</span></label>
+                            <label><input type="checkbox" name="areaId" value="12"/><span>安徽</span></label>
+
+                            <label><input type="checkbox" name="areaId" value="16"/><span>浙江</span></label>
+                            <label><input type="checkbox" name="areaId" value="1"/><span>北京</span></label>
+                            <label><input type="checkbox" name="areaId" value="3"/><span>重庆</span></label>
+                            <label><input type="checkbox" name="areaId" value="24"/><span>福建</span></label>
+                            <label><input type="checkbox" name="areaId" value="26"/><span>广东</span></label>
+                            <label><input type="checkbox" name="areaId" value="19"/><span>广西</span></label>
+                            <label><input type="checkbox" name="areaId" value="20"/><span>甘肃</span></label>
+                            <label><input type="checkbox" name="areaId" value="25"/><span>贵州</span></label>
+                            <label><input type="checkbox" name="areaId" value="2"/><span>河北</span></label>
+                            <label><input type="checkbox" name="areaId" value="10"/><span>河南</span></label>
+                            <label><input type="checkbox" name="areaId" value="31"/><span>海南</span></label>
+                            <label><input type="checkbox" name="areaId" value="18"/><span>湖北</span></label>
+                            <label><input type="checkbox" name="areaId" value="4"/><span>湖南</span></label>
+                            <label><input type="checkbox" name="areaId" value="23"/><span>吉林</span></label>
+                            <label><input type="checkbox" name="areaId" value="15"/><span>江苏</span></label>
+                            <label><input type="checkbox" name="areaId" value="17"/><span>江西</span></label>
+                            <label><input type="checkbox" name="areaId" value="30"/><span>宁夏</span></label>
+                            <label><input type="checkbox" name="areaId" value="11"/><span>辽宁</span></label>
+                            <label><input type="checkbox" name="areaId" value="27"/><span>青海</span></label>
+                            <label><input type="checkbox" name="areaId" value="9"/><span>上海</span></label>
+                            <label><input type="checkbox" name="areaId" value="29"/><span>四川</span></label>
+                            <label><input type="checkbox" name="areaId" value="13"/><span>山东</span></label>
+                            <label><input type="checkbox" name="areaId" value="21"/><span>山西</span></label>
+                            <label><input type="checkbox" name="areaId" value="6"/><span>陕西</span></label>
+                            <label><input type="checkbox" name="areaId" value="8"/><span>天津</span></label>
+                            <label><input type="checkbox" name="areaId" value="14"/><span>新疆</span></label>
+                            <label><input type="checkbox" name="areaId" value="28"/><span>西藏</span></label>
+                            <label><input type="checkbox" name="areaId" value="5"/><span>云南</span></label>
+
+                            <label><input type="checkbox" name="areaId" value="0"/><span>澳门</span></label>
+                            <label><input type="checkbox" name="areaId" value="0"/><span>香港</span></label>
+                            <label><input type="checkbox" name="areaId" value="7"/><span>黑龙江</span></label>
+                            <label><input type="checkbox" name="areaId" value="22"/><span>内蒙古</span></label>
+
+                        </div>
+                    </div>
+                    <div class="cadrborder">
+                        <div style="padding-left: 28px;">
+                            <!--          学校层次         -->
+                            <label><input type="checkbox" name="is985" value="985"/><span>985</span></label>
+                            <label><input type="checkbox" name="is211" value="211"/><span>211</span></label>
+                            <label><input type="checkbox" name="isdoublefirstclass"
+                                          value="1"/><span>双一流</span></label>
+                        </div>
+                    </div>
+                    <div class="cadrborder">
+                        <div style="padding-left: 16px">
+                            <!--    学校类型      -->
+                            <label><input type="radio" name="type" value=""/><span>不限</span></label>
+                            <label><input type="radio" name="type" value="综合"/><span>综合类</span></label>
+                            <label><input type="radio" name="type" value="理工"/><span>理工类</span></label>
+                            <label><input type="radio" name="type" value="财经"/><span>财经类</span></label>
+                            <label><input type="radio" name="type" value="农林"/><span>农林类</span></label>
+                            <label><input type="radio" name="type" value="医药"/><span>医药类</span></label>
+                            <label><input type="radio" name="type" value="师范"/><span>师范类</span></label>
+                            <label><input type="radio" name="type" value="体育"/><span>体育类</span></label>
+                            <label><input type="radio" name="type" value="政法"/><span>政法类</span></label>
+                            <label><input type="radio" name="type" value="艺术"/><span>艺术类</span></label>
+                            <label><input type="radio" name="type" value="民族"/><span>民族类</span></label>
+                            <label><input type="radio" name="type" value="军事"/><span>军事类</span></label>
+                            <label><input type="radio" name="type" value="语言"/><span>语言类</span></label>
+                        </div>
+                    </div>
+                    <button type="submit" >搜索</button>
+                </form>
+
+                <!--                <form action="">-->
+<!--                    <label><input type="checkbox" name="r" value="0"/><span>不限</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="0"/><span>安徽</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="0"/><span>澳门</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="0"/><span>北京</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="10"/><span>重庆</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="11"/><span>福建</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="12"/><span>广东</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="10"/><span>广西</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="11"/><span>甘肃</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="12"/><span>贵州</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="10"/><span>河北</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="11"/><span>河南</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="1"/><span>海南</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="7"/><span>湖北</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="8"/><span>湖南</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="7"/><span>黑龙江</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="8"/><span>吉林</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="6"/><span>江苏</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="6"/><span>江西</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="9"/><span>辽宁</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="9"/><span>内蒙古</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="9"/><span>宁夏</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="9"/><span>青海</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="2"/><span>上海</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="9"/><span>四川</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="3"/><span>山东</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="9"/><span>山西</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="9"/><span>陕西</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="4"/><span>天津</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="9"/><span>新疆</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="9"/><span>西藏</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="9"/><span>香港</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="9"/><span>云南</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="5"/><span>浙江</span></label>-->
+<!--                </form>-->
+
+            </div>
+
+
+<!--            <div class="dq">-->
+<!--                <form action="">-->
+<!--                    <label><input type="checkbox" name="r" value="0"/><span>不限</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="1"/><span>985</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="2"/><span>211</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="3"/><span>双一流</span></label>-->
+<!--                </form>-->
+
+<!--            </div>-->
+<!--            <div class="dq">-->
+<!--                <form action="">-->
+<!--                    <label><input type="checkbox" name="r" value="0"/><span>不限</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="0"/><span>本科</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="0"/><span>专科</span></label>-->
+<!--                </form>-->
+
+<!--            </div>-->
+<!--            <div class="dq">-->
+<!--                <form action="">-->
+<!--                    <label><input type="checkbox" name="r" value="0"/><span>不限</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="0"/><span>公办</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="0"/><span>民办</span></label>-->
+<!--                </form>-->
+
+<!--            </div>-->
+<!--            <div class="dq">-->
+<!--                <form action="">-->
+<!--                    <label><input type="checkbox" name="r" value="0"/><span>不限</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="0"/><span>综合类</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="0"/><span>理工类</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="0"/><span>财经类</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="0"/><span>农林类</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="0"/><span>医药类</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="0"/><span>师范类</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="0"/><span>体育类</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="0"/><span>政法类</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="0"/><span>艺术类</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="0"/><span>民族类</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="0"/><span>军事类</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="0"/><span>语言类</span></label>-->
+<!--                    <label><input type="checkbox" name="r" value="0"/><span>其他类</span></label>-->
+<!--                </form>-->
+
+<!--            </div>-->
+        </div>
+    </div>
+
+</div>
+<footer class="ui inverted vertical segment m-padded-tb-massive" style="margin-top: 40px">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided stackable grid">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="/images/wechat.jpg" class="ui rounded image" alt="" style="width: 110px">
+                    </div>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced " >关于我们</h4>
+
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced ">联系我们</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item m-text-thin">服务热线： 18629648756</a>
+                    <a href="#" class="item m-text-thin">营业时间： 9:00~21:00</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced ">法律声明</h4>
+
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced m-opacity-tiny">UP志愿专家 西安阿谱云教育科技有限公司版权所有陕ICP备20000936号 © 2012- 2020</p>
+    </div>
+
+</footer>
+</body>
+</html>

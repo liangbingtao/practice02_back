@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>分数线</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="/css/me.css">
+    <style>
+        body {
+            background-color: whitesmoke;
+        }
+
+        .title {
+            margin-top: 10px;
+            /*margin-left: 280px;*/
+            text-align: center;
+        }
+
+        .dropdown active {
+            background-color: #b0b0b0;
+        }
+
+
+        .ss {
+            height: 80px;
+
+        }
+
+        .cx {
+            width: 90%;
+            height: 100%;
+            float: left;
+
+        }
+
+        .cx img {
+            width: 100%;
+            margin-left: 35px;
+        }
+
+        .sr {
+            float: left;
+            width: 820px;
+            height: 30px;
+            margin-top: 3px;
+            margin-left: 30px;
+            border-radius: 0px;
+        }
+
+
+        .zd a {
+            width: 50px;
+            height: 50px;
+            background-color: #42495d;
+            color: #b0b0b0;
+            font-size: 15px;
+        }
+
+        .hide {
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+
+<div th:insert="navigation :: nav"></div>
+<ul class="breadcrumb" style="margin-top: -20px;background-color: white">
+    <span class="glyphicon glyphicon-pawn"></span>
+    <li><a href="/">首页</a></li>
+    <li><a href="#">分数线</a></li>
+
+</ul>
+
+
+<div class="container" style="background-color: #FFFFFF">
+
+    <div class="cx">
+        <p style="font-size: 24px;margin-left: 30px;margin-top: 20px"><span
+                class="glyphicon glyphicon-menu-hamburger"></span>分数线查询</p>
+        <div class="ss">
+            <form action="/scorelines">
+                <input class="sr" name="schoolName" type="text" style="float: left" placeholder="输入学校名称">
+                <input class="btn" type="button" style="float: left;background-color: #cccccc;width:80px;margin: 0px 2px" onclick="next()" value="省控线">
+                <input type="submit"  style="display:block;background-color: #cccccc;width:90px;margin-top:23px" class="btn" value="搜索">
+            </form>
+        </div>
+
+        <button value="查看示例" onclick="fn()"
+                style="display:block;margin-left: 40px;margin-bottom:50px;background-color: white;border:1px solid ghostwhite;"
+                id="world">查看示例
+        </button>
+
+
+        <!--   院校分数线展示     -->
+        <div>
+            <table class="table" id="tab">
+
+                <tr th:if="${scorelines} !=null">
+                    <th>学校</th>
+                    <th>年份</th>
+                    <th>招生批次</th>
+                    <th>最低分</th>
+                    <th>最低排名</th>
+                </tr>
+
+                <tbody>
+                <tr th:each="score:${scorelines}">
+                    <td th:text="${score.name}"></td>
+                    <td th:text="${score.year}"></td>
+                    <td th:if="(${score.sort}==1 and ${score.batch}==1)" th:text="'理科 本一批'"></td>
+                    <td th:if="(${score.sort}==2 and ${score.batch}==1)" th:text="'文科 本一批'"></td>
+                    <td th:if="(${score.sort}==1 and ${score.batch}==2)" th:text="'理科 本二批'"></td>
+                    <td th:if="(${score.sort}==2 and ${score.batch}==2)" th:text="'文科 本二批'"></td>
+                    <td th:text="${score.minScore}"></td>
+                    <td th:text="${score.minRank}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--   历年招生信息    -->
+        <div>
+            <table class="table" >
+
+                <tr th:if="${proAndCalData} !=null">
+                    <th>招生专业</th>
+                    <th>招生省份</th>
+                    <th>年份</th>
+                    <th>招生批次</th>
+                    <th>最低分</th>
+                    <th>最低排名</th>
+                </tr>
+
+                <tbody>
+                <tr th:each="pro:${proAndCalData}">
+                    <td th:text="${pro.spname}"></td>
+                    <td th:text="${pro.local_province_name}"></td>
+                    <td th:text="${pro.year}"></td>
+                    <td th:if="(${pro.local_type_name}==1 and ${pro.local_batch_name}=='本科一批')" th:text="'理科 本一批'"></td>
+                    <td th:if="(${pro.local_type_name}==2 and ${pro.local_batch_name}=='本科一批')" th:text="'文科 本一批'"></td>
+                    <td th:if="(${pro.local_type_name}==1 and ${pro.local_batch_name}=='本科二批')" th:text="'理科 本二批'"></td>
+                    <td th:if="(${pro.local_type_name}==2 and ${pro.local_batch_name}=='本科二批')" th:text="'文科 本二批'"></td>
+                    <td th:text="${pro.min}"></td>
+                    <td th:text="${pro.min_section}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <img class="hide" src="//staticv3.youzy.cn/images/scorelines/exp-js-1.jpg" alt="" id="img"/>
+    <img class="hide" src="//staticv3.youzy.cn/images/scorelines/exp-js-2.jpg" alt="" id="img1"/>
+    <img class="hide" src="//staticv3.youzy.cn/images/scorelines/exp-js-3.jpg" alt="" id="img2"/>
+</div>
+
+
+<!--<div class="panel panel-default" style="width: 86%;margin-left:95px;margin-top: 30px;border-color: white"-->
+<!--     th:each="data:${proAndCalData}">-->
+<!--    <div th:each="sc:${scorelines}">-->
+
+
+<!--        <div class="panel-heading" style="font-size: 24px;height: 60px" th:text="${data.name}"></div>-->
+<!--        &lt;!&ndash; List group &ndash;&gt;-->
+<!--        <ul class="list-group">-->
+
+<!--            <p style=" font-size: 18px;margin-left: 10px" th:text="'类型：'+${data.type}"></p>-->
+
+<!--            <p style=" font-size: 18px;margin-left: 10px" th:text="''+${data.spname}"></p>-->
+<!--            &lt;!&ndash;                <p style=" font-size: 18px;margin-left: 10px" th:text="''+${data.max}"></p>&ndash;&gt;-->
+<!--            <p style=" font-size: 18px;margin-left: 10px" th:text="'省份'+${data.local_province_name}"></p>-->
+
+<!--            &lt;!&ndash;                <p style=" font-size: 18px;margin-left: 10px" th:text="'9'+${data.school_id}"></p>&ndash;&gt;-->
+<!--            &lt;!&ndash;                <p style=" font-size: 18px;margin-left: 10px" th:text="'10'+${data.average}"></p>&ndash;&gt;-->
+<!--            <p style=" font-size: 18px;margin-left: 10px" th:text="'最小部分'+${data.min_section}"></p>-->
+
+<!--            &lt;!&ndash;                <p style=" font-size: 18px;margin-left: 10px" th:text="'职业：'+${data.profession}"></p>&ndash;&gt;-->
+<!--            &lt;!&ndash;                <p style=" font-size: 18px;margin-left: 10px" th:text="'平均值'+${data.average}"></p>&ndash;&gt;-->
+<!--            &lt;!&ndash;                <p style=" font-size: 18px;margin-left: 10px" th:text="'地区'+${data.areaname}"></p>&ndash;&gt;-->
+<!--            <p style=" font-size: 18px;margin-left: 10px" th:text="'年份'+${data.year}"></p>-->
+
+
+<!--            <p style=" font-size: 18px;margin-left: 10px" th:text="'分类'+${sc.sort}"></p>-->
+<!--            <p style=" font-size: 18px;margin-left: 10px" th:text="'最小值'+${sc.minScore}"></p>-->
+
+<!--            <p style=" font-size: 18px;margin-left: 10px" th:text="'scid'+${sc.scid}"></p>-->
+<!--            <p style=" font-size: 18px;margin-left: 10px" th:text="'最小范围'+${sc.minRank}"></p>-->
+
+<!--            <p style=" font-size: 18px;margin-left: 10px" th:text="+${sc.batch}"></p>-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--    -->
+<!--</div>-->
+
+
+<br>
+<footer class="ui inverted vertical segment m-padded-tb-massive" style="margin-top: 20px">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided stackable grid">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="../static/images/wechat.jpg" class="ui rounded image" alt="" style="width: 110px">
+                    </div>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced ">关于我们</h4>
+
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced ">联系我们</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item m-text-thin">服务热线： 18629648756</a>
+                    <a href="#" class="item m-text-thin">营业时间： 9:00~21:00</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced ">法律声明</h4>
+
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced m-opacity-tiny">UP志愿专家 西安阿谱云教育科技有限公司版权所有陕ICP备20000936号 © 2012- 2020</p>
+    </div>
+
+</footer>
+</body>
+<script>
+    function fn() {
+        var img = document.getElementById("img");
+        var img1 = document.getElementById("img1");
+        var img2 = document.getElementById("img2");
+        if (document.getElementById("world").innerHTML == "查看示例") {
+            img.className = "";
+            img1.className = "";
+            img2.className = "";
+            document.getElementById("world").innerHTML = "隐藏示例";
+        } else {
+            img.className = "hide";
+            img1.className = "hide";
+            img2.className = "hide";
+
+            document.getElementById("world").innerHTML = "查看示例";
+        }
+    }
+</script>
+<script>
+
+
+    function next() {
+        window.location.href = '/picixian';
+    }
+
+</script>
+
+</html>

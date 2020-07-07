@@ -22,7 +22,7 @@ java -jar -Dspring.profiles.active=production target/practice-0.0.1-SNAPSHOT.jar
 - vim src/main/resources/application-production.properties
 - mvn package 
 - java -jar -Dspring.profiles.active=production target/打的jar包
-- ps -axu | grep java
+- ps -axu | grep java   //查看进程
 - git pull
 - mvn package
 - java -jar -Dspring.profiles.active=production target/打的jar包

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="practice02_back.mapper.NewsMapper">
+
+    <insert id="insertNews" parameterType="news">
+        insert into news(title, author, release_time, content)
+        values (#{title}, #{author}, #{releaseTime}, #{content})
+    </insert>
+
+
+    <select id="findAllNews" resultType="news">
+        select *
+        from news order by id desc;
+    </select>
+
+
+    <delete id="deleteNewsById" parameterType="Integer">
+        delete
+        from news
+        where id = #{id}
+    </delete>
+
+    <select id="findNewsById" parameterType="Integer" resultType="News">
+        select *
+        from news
+        where id = #{id}
+    </select>
+
+    <update id="updateNews" parameterType="news" >
+        update news set title =#{title},content =#{content} where id =#{id}
+    </update>
+
+    <insert id="insertAll" parameterType="news">
+        insert into news (id,title, author, release_time, content) VALUES (#{id},#{title},#{author},#{releaseTime},#{content})
+    </insert>
+
+
+</mapper>

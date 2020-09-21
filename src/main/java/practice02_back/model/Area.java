@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class Area {
-    private int aid;
+    private Integer aid;
     private String aname;
 }

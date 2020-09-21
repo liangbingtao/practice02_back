@@ -7,21 +7,21 @@
 
     <select id="selectNameByAreaid" resultType="School" parameterType="int">
         select *
-        from zhiyuan.school
+        from school
         where areaid = #{areaid}
     </select>
 
     <select id="getSchoolByPro" resultType="Gaokao" parameterType="String">
         select distinct name, spname
-        from zhiyuan.gaokao
+        from gaokao
         where spname like concat('%', #{proname}, '%')
         ORDER BY gaokao.rank
     </select>
 
     <select id="getSchoolByPid" resultType="Gaokao" parameterType="Integer">
         select distinct g.name,g.scid,p.proname
-        from zhiyuan.gaokao g,
-             zhiyuan.profession p
+        from gaokao g,
+             profession p
         where g.spname like concat('%', p.proname, '%')
           and p.pid = #{pid}
     </select>
@@ -52,8 +52,8 @@
     <select id="getSchoolByName" resultMap="getProBySchname">
 
         select distinct pro.proname, g.*
-        from zhiyuan.profession pro,
-             zhiyuan.gaokao g
+        from profession pro,
+             gaokao g
         where g.spname like concat('%', pro.proname, '%')
           and g.name = #{schoolName}
         GROUP BY pro.proname
@@ -62,7 +62,7 @@
 
     <select id="findAllSchool" resultType="school">
         select *
-        from zhiyuan.school
+        from school
         <where>
             <if test="areaId != null and areaId[0] != -1 ">
                 areaid in
@@ -90,7 +90,7 @@
 
     <select id="findAllSchoolByreid" resultType="school">
         select *
-        from zhiyuan.school
+        from school
         where reid = #{reid}
         order by `rank`
         limit #{offset},#{size}
@@ -99,18 +99,18 @@
 
     <select id="findSchool" resultType="school">
         select *
-        from zhiyuan.school
+        from school
         where name = #{schoolname}
     </select>
 
     <select id="findSchoolByName" resultType="school">
         select *
-        from zhiyuan.school
+        from school
         where name = #{schoolname}
     </select>
 
     <select id="count" resultType="int">
-        select count(1) from zhiyuan.school
+        select count(1) from school
         <where>
             <if test="areaId != null and areaId[0] != -1 ">
                 areaid in
@@ -134,7 +134,7 @@
     </select>
 
     <select id="countByReid" resultType="Integer">
-        select count(1) from zhiyuan.school where reid=#{reid}
+        select count(1) from school where reid=#{reid}
     </select>
 
 
@@ -146,8 +146,8 @@
 
     <select id="getProByScid" resultMap="getProByScid">
         select distinct pro.proname, g.*
-        from zhiyuan.profession pro,
-             zhiyuan.gaokao g
+        from profession pro,
+             gaokao g
         where g.spname like concat('%', pro.proname, '%')
           and g.scid = #{scid}
         GROUP BY pro.proname

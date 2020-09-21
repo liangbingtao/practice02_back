@@ -8,7 +8,7 @@
 
     <select id="regionList" resultType="school">
         select distinct region, reid
-        from zhiyuan.school
+        from school
         order by reid
     </select>
 

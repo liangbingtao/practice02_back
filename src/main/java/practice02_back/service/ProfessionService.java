@@ -15,7 +15,7 @@ public class ProfessionService {
     @Autowired
     private ProfessionMapper professionMapper;
 
-    public PaginationDTO listProfessionByMajor(String major, Integer page, Integer size) {
+    public PaginationDTO listProfessionByMajor(String major, Integer page,Integer size) {
         PaginationDTO paginationDTO = new PaginationDTO();
         Integer totalPage;
         Integer totalCount = professionMapper.countByMajor(major);  //计算出该学科门类下共有多少种专业
@@ -41,11 +41,11 @@ public class ProfessionService {
         List<Profession> professionByMajor = professionMapper.findProfessionByMajor(major, offset, size);
         paginationDTO.setProfessions(professionByMajor);
 
-        return  paginationDTO;
+        return paginationDTO;
     }
 
     public PaginationDTO getProfessionByProname(String profession) {
-        PaginationDTO paginationDTO=new PaginationDTO();
+        PaginationDTO paginationDTO = new PaginationDTO();
         List<Profession> professionByProname = professionMapper.getProfessionByProname(profession);
         paginationDTO.setProfessions(professionByProname);
         return paginationDTO;

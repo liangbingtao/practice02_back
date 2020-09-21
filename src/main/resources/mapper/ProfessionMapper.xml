@@ -50,9 +50,9 @@
 
     <select id="getProfessionByScid" resultMap="getProByScid">
         select *
-        from zhiyuan.profession pro,
-             zhiyuan.school sc,
-#              zhiyuan.t_school_profession sc_pro
+        from profession pro,
+             school sc,
+#              t_school_profession sc_pro
              zhiyuan.gaokao g
         where g.scid = sc.scid
           and g.spname = pro.proname
@@ -62,23 +62,23 @@
 
     <select id="selectDistinctMajor" resultType="profession">
         select distinct major, subject, pid, proname, code
-        from zhiyuan.profession;
+        from profession;
     </select>
 
     <select id="getDistinctMajor" resultType="profession">
         select distinct major
-        from zhiyuan.profession;
+        from profession;
     </select>
 
     <select id="selectByPid" resultType="profession" parameterType="Integer">
         select *
-        from zhiyuan.profession
+        from profession
         where pid = #{pid}
     </select>
 
 
     <select id="getProfessionByProname" resultType="profession">
-        select * from zhiyuan.profession
+        select * from profession
         <where>
             <if test="profession !=null and profession !=''">
                 subject like concat('%',#{profession},'%')
@@ -107,7 +107,7 @@
 
     <select id="findProfessionByMajor" resultType="Profession">
         select *
-        from zhiyuan.profession
+        from profession
         where major = #{major}
         limit #{offset},#{size}
     </select>

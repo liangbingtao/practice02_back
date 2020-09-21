@@ -30,8 +30,8 @@
 
     <select id="getProAndCalendarData" resultMap="proAndCalendarData">
         SELECT *
-        FROM `zhiyuan`.`gaokao` g,
-             `zhiyuan`.`profession` p
+        FROM `gaokao` g,
+             `profession` p
         where g.spname like concat('%',p.proname,'%')
           and g.`name` = #{schoolName}
         GROUP BY p.proname

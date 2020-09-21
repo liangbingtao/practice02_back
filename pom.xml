@@ -9,13 +9,15 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.practice</groupId>
-    <artifactId>practice</artifactId>
+    <artifactId>spring-boot-docker</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>practice02_back</name>
+    <name>spring-boot-docker_back</name>
     <description>志愿项目服务端</description>
 
     <properties>
         <java.version>1.8</java.version>
+        <!--    docker镜像的前缀    -->
+        <docker.image.prefix>docker</docker.image.prefix>
     </properties>
 
     <dependencies>
@@ -140,6 +142,28 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.0.0</version>
+
+                <configuration>
+                    <!--远程Docker的地址-->
+                    <dockerHost>http://47.95.248.109:2375</dockerHost>
+                    <!--镜像名称，前缀/项目名-->
+                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                    <!-- Dockerfile的位置-->
+                    <dockerDirectory>src/main/docker</dockerDirectory>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
+
             <plugin>
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>

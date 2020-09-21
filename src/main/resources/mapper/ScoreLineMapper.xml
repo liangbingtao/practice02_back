@@ -7,14 +7,14 @@
 
     <select id="getScoresBySchoolName" resultType="schoolscore">
         select *
-        from zhiyuan.schoolscore
+        from schoolscore
         where name = #{name}
         order by year DESC
     </select>
 
     <select id="getRankByScore" resultType="int">
         select `rank`
-        from zhiyuan.score_rank
+        from score_rank
         where score = #{score}
           and sort = #{sort}
           and year = 2019
